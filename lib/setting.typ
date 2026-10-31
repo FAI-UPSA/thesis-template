@@ -20,7 +20,7 @@
   work-title: none,
   /// Abstracto o resumen del trabajo de grado.
   abstract: none,
-  /// Fecha de presentación del trabajo de grado.
+  /// Fecha de presentación del trabajo de grado (usualmente solo se necesita el año).
   date: none,
   /// Palabras clave del trabajo de grado.
   keywords: none,
@@ -80,6 +80,13 @@
   info.thesis-modality-short.update(modality-acronym)
 
   info.multi-part.update(multi-part)
+
+  assert(
+    date != none and type(date) == std.datetime,
+    message: "La fecha de presentación del trabajo de grado (date) es obligatoria y debe ser un objeto de tipo std.datetime, no: "
+      + repr(type(date))
+      + ".",
+  )
   info.work-date.update(date)
   info.volumes.update(volumes)
 
@@ -147,6 +154,11 @@
     description: abstract,
     author: author-name,
     keywords: keywords,
+  )
+
+  set text(
+    lang: "es",
+    region: "bo",
   )
 
   let page-margins(paper-size, print-layout) = {

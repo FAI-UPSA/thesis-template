@@ -52,6 +52,7 @@
   content-index
 
   v(1em)
+  import "@preview/datify:1.3.0": custom-date-format
 
   table(
     columns: (auto, 1fr),
@@ -70,7 +71,18 @@
       ([Correo electrónico], text(email, number-type: "lining", number-width: "tabular", features: (case: 1)))
     },
     ..if year != none {
-      ([Año], text(repr(year), number-type: "lining", number-width: "tabular"))
+      (
+        [Año],
+        text(
+          custom-date-format(
+            year,
+            pattern: "yyyy",
+            lang: text.lang,
+          ),
+          number-type: "lining",
+          number-width: "tabular",
+        ),
+      )
     },
   )
 }
@@ -80,16 +92,20 @@
 /// Ref.:
 /// - https://www.minedu.gob.bo/index.php?option=com_content&view=article&id=1666:resolucion-bime&catid=235&Itemid=971.
 /// - https://utp.minedu.gob.bo/pdfs/Biblioteca.pdf
-#let bime() = context {
+#let bime(body: none) = context {
+  import "@preview/datify:1.3.0": custom-date-format
+
   let author = info.author-name.get()
   let work-title = info.work-title.get()
   let year = info.work-date.get()
   let city = info.city.get()
   let modality = info.thesis-modality.get()
   let supervisor = info.supervisor.get()
-  let abstract = info.work-abstract.get()
+  let abstract = if body == none { info.work-abstract.get() } else { body }
   let university = info.university.get()
   let degree = info.degree-program.get()
+  let typeface = info.font.get()
+  let paper-size = info.paper-size.get()
 
   set document(
     title: work-title,
@@ -99,9 +115,21 @@
 
   show std.title: set align(center)
   show std.title: set block(spacing: 2em)
-  show std.title: set text(size: 16pt)
-  set text(size: 10pt, lang: "es", region: "bo", hyphenate: false)
-  set page(paper: "a4", margin: 1.5in)
+  show std.title: set text(size: 16pt, font: typeface.display)
+
+  set text(
+    size: 10pt,
+    lang: "es",
+    region: "bo",
+    hyphenate: false,
+    ..typeface.text,
+  )
+
+  set page(
+    paper: paper-size,
+    margin: if paper-size == "a4" { 3.5cm } else { 1.5in },
+  )
+
   set par(justify: true)
   set terms(separator: [: ])
   line(length: 100%)
@@ -114,7 +142,11 @@
     / #upper[Nombres y apellidos del autor]: #author
     / #upper[Nombres y apellidos del tutor o prof. guía]: #supervisor
     / #upper[Ciudad]: #city
-    / #upper[Año del trabajo]: #text( number-type: "lining", number-width: "tabular")[#year]
+    / #upper[Año del trabajo]: #text(number-type: "lining", number-width: "tabular")[#custom-date-format(
+        year,
+        pattern: "yyyy",
+        lang: text.lang,
+      )]
   ]
 
   line(length: 100%)

@@ -9,6 +9,7 @@
 // En la carátula o tapa interna se debe colocar lo mismo que en la tapa (portada externa) con la sola adición de: "{modalidad de grado} para optar al grado de {grado} en {carrera}".
 #let title-page(is-front-cover: false) = context {
   import "info.typ"
+  import "@preview/datify:1.3.0": custom-date-format
 
   let typeface = info.font.get()
   let font-family = info.font-family.get()
@@ -102,12 +103,12 @@
 
   if author-id != none and not is-front-cover [
     #v(1.25em)
-    #text(size: info-size * 0.95, number-type: "lining", number-width: "tabular")[Código de Estudiante: #author-id]
+    #text(size: info-size * 0.95, number-type: "lining", number-width: "tabular")[Código de estudiante: #author-id]
   ]
 
   if supervisor != none {
     v(1.5em)
-    text(size: info-size * 0.85, tracking: 0.05em)[Director de Tesis]
+    text(size: info-size * 0.85, tracking: 0.05em)[Director de #modality]
     v(0.5em)
     text(supervisor, size: info-size * 1.05, weight: "medium")
   }
@@ -117,7 +118,11 @@
   block(spacing: 0pt, {
     text(city, size: info-size * 1.1, tracking: 0.04em)
     v(0.3em)
-    text(size: info-size, weight: "bold", number-type: "lining")[#year]
+    text(size: info-size, weight: "bold", number-type: "lining")[#custom-date-format(
+      year,
+      pattern: "yyyy",
+      lang: text.lang,
+    )]
   })
 
   if not is-front-cover {

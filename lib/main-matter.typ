@@ -136,8 +136,6 @@
   )
 
   set text(
-    lang: "es",
-    region: "bo",
     ..typeface.text,
   )
 

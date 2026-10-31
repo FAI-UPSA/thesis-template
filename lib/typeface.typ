@@ -75,7 +75,7 @@
   ),
   display: "Inter",
   math: (
-    font: "Fira Math",
+    font: "Lete Sans Math",
     size: 10pt,
   ),
   mono: (

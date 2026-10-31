@@ -287,8 +287,11 @@
 
   // A part advances the outer counter, but preserves the continuous chapter
   // number. The native heading counter remains the sole numbering source.
-  let previous = counter(heading).get()
+  let chapters = query(heading.where(level: 2).before(here())).filter(it => it.numbering != none).len()
   heading(level: 1, offset: 0, numbering: "I", body, supplement: [Parte])
-  counter(heading).update((previous.first() + 1, previous.at(1, default: 0)))
+  counter(heading).update((..previous) => (
+    previous.pos().first(),
+    chapters,
+  ))
   pagebreak(weak: true)
 }

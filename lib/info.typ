@@ -5,6 +5,7 @@
 #let author-uni-id = state("author-uni-id", none)
 #let work-title = state("work-title", none)
 #let multi-part = state("is-multi-part", false)
+#let in-back-matter = state("in-back-matter", false)
 #let supervisor = state("supervisor", none)
 #let thesis-modality = state("thesis-modality", none)
 #let thesis-modality-short = state("thesis-modality-short", none)

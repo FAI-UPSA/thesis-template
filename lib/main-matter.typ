@@ -1,5 +1,3 @@
-#import "cite.typ": to-string
-
 // Apply the same logical hierarchy at each matter's heading offset.
 #let heading-supplements(body, offset: 0, appendix: false) = {
   show heading.where(level: offset + 1): set heading(
@@ -36,13 +34,15 @@
   // Se recomienda que cada capítulo comience en hoja aparte y que cada uno de ellos incluya un párrafo introductorio que presente su organización e indique al lector cuál es el objetivo específico del mismo.
   // Igualmente, al terminar cada capítulo es aconsejable redactar un párrafo que contenga un pequeño resumen de lo tratado e indique además la relación del capítulo que termina con el que empieza a continuación.
   pagebreak(weak: true)
-  set par(justify: false, leading: 1.25em - 0.75em)
+  set par(justify: false, leading: 0.5em)
   set align(alignment)
   // Keep the complete heading together and attached to the following content.
   block(width: 100%, breakable: false, sticky: true, {
     set text(tracking: 0.05em, number-type: "lining", number-width: "tabular")
 
-    if it.numbering != none and it.outlined == true [
+    // An inline-only block keeps the label in the heading's structure,
+    // without introducing a nested paragraph beside the title block.
+    if it.numbering != none and it.outlined { block[
       #set text(
         size: 2.5em,
         fill: gray.darken(40%),
@@ -52,7 +52,7 @@
         size: 1.25em,
         counter(heading).display(it.numbering),
       )
-    ]
+    ] }
 
     block(
       width: 100%,
@@ -78,31 +78,34 @@
 
   v(0.5fr)
 
-  text(
+  // Keep each visual line in the native heading, without paragraph tags.
+  // Paragraph spacing used to resolve at each line's font size. Preserve
+  // that spacing explicitly while keeping the lines free of paragraph tags.
+  block(spacing: par.spacing * 1.5, text(
     size: 1.5em,
     weight: 500,
     tracking: 0.05em,
     upper(it.supplement),
-  )
+  ))
 
   v(1em)
 
-  if it.numbering != none and it.outlined == true {
-    text(
+  if it.numbering != none and it.outlined {
+    block(spacing: par.spacing * 3.5, text(
       font: typeface.text.font,
       size: 3.5em,
       weight: "black",
-    )[#counter(heading).display(it.numbering)]
+    )[#counter(heading).display(it.numbering)])
 
     v(1em)
   }
 
-  text(
+  block(spacing: par.spacing * 2.5, text(
     size: 2.5em,
     weight: "bold",
     tracking: 0.1em,
     upper(it.body),
-  )
+  ))
 
   v(1fr)
 }
@@ -198,7 +201,7 @@
   show quote.where(block: true): set block(spacing: 1.5em)
 
   // TODO: Move this as an APA quote function and use wordometer
-  import "@preview/wordometer:0.1.6": total-words, word-count
+  import "@preview/wordometer:0.1.6": word-count
 
   show quote: it => word-count(total => {
     let is-block = total.words >= 40
@@ -258,9 +261,9 @@
 
   show: heading-styles.with(offset: chapter-level - 1)
 
-  // Match markup depth directly: supplements are assigned by show-set rules
-  // and are not available yet when a show-rule selector is matched.
-  show heading.where(depth: 1): it => {
+  // Imported sections may also have markup depth 1 with a larger offset.
+  // Only resolved part/chapter levels receive a chapter-opening page.
+  show heading.where(level: 1).or(heading.where(level: chapter-level)): it => {
     if it.supplement == [Parte] {
       part-page(it)
     } else {
@@ -276,6 +279,7 @@
   // La numeración de páginas no es correlativa entre romana y arábiga, por lo que se reinicia el contador de páginas al cambiar a la numeración arábiga.
   counter(heading).update(0)
   counter(page).update(1)
+  info.in-back-matter.update(false)
 
   body
 }
@@ -283,15 +287,28 @@
 #let part(body) = context {
   import "info.typ"
 
-  assert(info.multi-part.get(), message: "El documento no está configurado para múltiples partes.")
-
-  // A part advances the outer counter, but preserves the continuous chapter
-  // number. The native heading counter remains the sole numbering source.
-  let chapters = query(heading.where(level: 2).before(here())).filter(it => it.numbering != none).len()
-  heading(level: 1, offset: 0, numbering: "I", body, supplement: [Parte])
-  counter(heading).update((..previous) => (
-    previous.pos().first(),
-    chapters,
-  ))
-  pagebreak(weak: true)
+  // The same document source can retain part boundaries in chapter-only mode.
+  if info.multi-part.get() {
+    // A part advances the outer heading counter, but preserves the continuous
+    // chapter number.
+    // Back matter resets heading counters for alphabetic appendices, so part
+    // numbering must follow the document's parts rather than that reset.
+    let part-number = query(heading.where(level: 1, supplement: [Parte]).before(here())).len() + 1
+    heading(
+      level: 1, offset: 0,
+      numbering: (..numbers) => numbering("I", part-number),
+      body, supplement: [Parte],
+    )
+    if info.in-back-matter.get() {
+      // A back-matter divider must not advance the alphabetic appendix counter.
+      let appendices = query(heading.where(level: 1, supplement: [Anexo]).before(here()))
+        .filter(it => it.numbering != none).len()
+      counter(heading).update(appendices)
+    } else {
+      let chapters = query(heading.where(level: 2).before(here()))
+        .filter(it => it.numbering != none).len()
+      counter(heading).update((part-number, chapters))
+    }
+    pagebreak(weak: true)
+  }
 }

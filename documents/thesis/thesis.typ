@@ -19,7 +19,7 @@
   faculty-acronym: [FAI],
   abstract: lorem(200),
   keywords: ("UPSA", "tesis"),
-  date: datetime.today().year(),
+  date: datetime.today(),
   paper-size: "a4",
   multi-part: multi-part,
 )

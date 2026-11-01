@@ -12,7 +12,7 @@
   faculty-acronym: [FAI],
   modality: [Proyecto de Grado],
   modality-acronym: [PG],
-  date: datetime.today().year(),
+  date: datetime.today(),
   abstract: [
     Este documento ilustra la configuración de un trabajo de grado mediante una
     plantilla en Typst. Reúne los datos del trabajo, capítulos, una tabla y citas

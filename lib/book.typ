@@ -54,7 +54,7 @@
       ),
       {
         if volumes > 1 {
-          text(size: 24pt, font: fonts.title, weight: "bold")[
+          text(size: 24pt, font: typeface.display, weight: "bold")[
             #numbering("I", n)
           ]
           parbreak()

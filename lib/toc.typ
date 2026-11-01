@@ -16,7 +16,7 @@
 
     set text(
       font: if is-part { typeface.text.font } else { typeface.display },
-      size: if is-part { 1.25em } else { 1.25em },
+      size: 1.25em,
       weight: if is-part { 700 } else { 600 },
       tracking: 0.025em,
     )
@@ -93,6 +93,13 @@
   }
 }
 
+// Parts add one outer level; deeper indentation retains the existing scale.
+#let outline-indent(level, chapter-level: 1) = {
+  if level <= chapter-level { 0em }
+  else if level == chapter-level + 1 { 0.5em }
+  else { level * 0.25em }
+}
+
 #let general-outline = context {
   import "info.typ"
 
@@ -110,41 +117,22 @@
     title: [Índice general],
     depth: if multi-part { 5 } else { 4 },
     target: target,
-    indent: n => if multi-part {
-      if n == 0 or n == 1 or n == 2 { 0em } else if n == 3 { 0.5em } else { n * 0.25em }
-    } else {
-      if n == 0 or n == 1 { 0em } else if n == 2 { 0.5em } else { n * 0.25em }
-    },
+    indent: outline-indent.with(chapter-level: if multi-part { 2 } else { 1 }),
   )
 }
 
-// Genera el índice de tablas si existen.
-#let table-outline = context {
-  if (counter(figure.where(kind: table)).final().at(0) != 0) {
-    outline(title: [Índice de tablas], target: figure.where(kind: table))
+// Keep the presence check and construction identical for all figure kinds.
+#let kind-outline(title, kind) = context {
+  let target = figure.where(kind: kind)
+  if counter(target).final().first() != 0 {
+    outline(title: title, target: target)
   }
 }
 
-// Genera el índice de figuras (imágenes) si existen.
-#let figure-outline = context {
-  if (counter(figure.where(kind: image)).final().at(0) != 0) {
-    outline(title: [Índice de figuras], target: figure.where(kind: image))
-  }
-}
-
-// Genera el índice de listados (código fuente) si existen.
-#let listing-outline = context {
-  if (counter(figure.where(kind: raw)).final().at(0) != 0) {
-    outline(title: [Índice de listados], target: figure.where(kind: raw))
-  }
-}
-
-// Genera el índice de fórmulas (o expresiones matemáticas) si existen.
-#let math-outline = context {
-  if (counter(figure.where(kind: math.equation)).final().at(0) != 0) {
-    outline(title: [Índice de fórmulas], target: figure.where(kind: math.equation))
-  }
-}
+#let table-outline = kind-outline([Índice de tablas], table)
+#let figure-outline = kind-outline([Índice de figuras], image)
+#let listing-outline = kind-outline([Índice de listados], raw)
+#let math-outline = kind-outline([Índice de fórmulas], math.equation)
 
 // Genera el índice de anexos si existen.
 #let appendix-outline = context {
@@ -157,14 +145,13 @@
       target: heading.where(outlined: true).after(
         appendices.first().location(), inclusive: true,
       ),
-      indent: n => if n <= 1 { 0em } else if n == 2 { 0.5em } else { n * 0.25em },
+      indent: outline-indent,
     )
   }
 }
 
 // Genera todos los índices del documento en su respectivo orden,
 #let all-outlines = context {
-  import "main-matter.typ": chapter-page
   show outline.entry: set text(number-type: "lining", number-width: "tabular")
   show outline.entry: set block(spacing: 0.75em)
   show outline.entry: set par(leading: 0.65em)

@@ -21,10 +21,9 @@
       tracking: 0.025em,
     )
 
-    link(el.location(), block(grid(
-      columns: (auto, 1fr, auto),
-      column-gutter: (0em, 0.25em),
-      align: (left, left, right + horizon),
+    // Keep each entry in native paragraph flow. Grid cells export generic
+    // Div groups inside the link instead of a continuous outline entry.
+    link(el.location(), it.indented(
       {
         if el.numbering != none {
           if is-part {
@@ -44,22 +43,22 @@
         }
       },
       {
-        if el.numbering != none {
-          h(0.5em)
-        }
         if is-part {
           upper(it.body())
         } else {
           smallcaps(it.body())
         }
+        // Keep the final title word and page number on the same line.
+        sym.space.nobreak
+        h(1fr)
+        box(inset: (left: 0.5em), text(
+          it.page(),
+          number-width: "tabular",
+          number-type: "lining",
+          stylistic-set: if font-family == "Alegreya" or font-family == "Piazzolla" { 1 } else { () },
+        ))
       },
-      text(
-        it.page(),
-        number-width: "tabular",
-        number-type: "lining",
-        stylistic-set: if font-family == "Alegreya" or font-family == "Piazzolla" { 1 } else { () },
-      ),
-    )))
+    ))
   } else {
     set text(
       weight: if el.supplement == [Sección] {

@@ -68,7 +68,17 @@
       ([Palabras clave], keywords.join(", "))
     },
     ..if email != none {
-      ([Correo electrónico], text(email, number-type: "lining", number-width: "tabular", features: (case: 1)))
+      (
+        [Correo electrónico],
+        {
+          show link: set text(
+            number-type: "lining",
+            number-width: "tabular",
+          )
+
+          link("mailto:" + email)
+        },
+      )
     },
     ..if year != none {
       (

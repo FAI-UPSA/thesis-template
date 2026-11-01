@@ -16,7 +16,7 @@
 
     set text(
       font: if is-part { typeface.text.font } else { typeface.display },
-      size: if is-part { 1.5em } else { 1.25em },
+      size: if is-part { 1.25em } else { 1.25em },
       weight: if is-part { 700 } else { 600 },
       tracking: 0.025em,
     )

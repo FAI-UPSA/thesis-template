@@ -125,7 +125,7 @@
 
   show std.title: set align(center)
   show std.title: set block(spacing: 2em)
-  show std.title: set text(size: 16pt, font: typeface.display)
+  show std.title: set text(size: 16pt, ..typeface.display)
 
   set text(
     size: 10pt,

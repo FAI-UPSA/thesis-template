@@ -30,10 +30,10 @@
   modality: none,
   /// Abreviatura de la modalidad del trabajo de grado (por ejemplo: PG, TL, TD, etc.)
   modality-acronym: none,
-  /// El tipo de letra a usar.
-  typeface: "Alegreya",
-  /// Diccionario de conjuntos por nombre, o un conjunto directo con text, display, math y mono.
-  typeface-options: typefaces,
+  /// Nombre de un conjunto predefinido. Si se omiten ambas opciones, se usa Alegreya.
+  typeface: none,
+  /// Conjunto personalizado con text, display, math y mono. Usar en lugar de typeface.
+  typeface-options: none,
   /// El formato de impresión del documento.
   ///
   /// - "screen" para PDF (márgenes simétricos).
@@ -103,24 +103,46 @@
   )
   info.paper-size.update(paper-size)
 
-  let direct-typeface = (
-    ("text", "display", "math", "mono").all(key => key in typeface-options)
-    and type(typeface-options.display) in (str, array)
+  assert(
+    typeface == none or typeface-options == none,
+    message: "Usá solo una opción: typeface para un conjunto predefinido o typeface-options para uno personalizado.",
   )
-  let selected-typeface = if direct-typeface {
-    typeface-options
-  } else if typeface in typeface-options {
-    typeface-options.at(typeface)
-  } else {
-    panic(
-      "El tipo de letra (typeface) debe ser uno de los siguientes: "
-        + typeface-options.keys().join(", ", last: " o ")
-        + ".",
+
+  let font-family = if typeface-options == none {
+    if typeface == none { "Alegreya" } else { typeface }
+  }
+  let selected-typeface = if typeface-options == none {
+    assert(
+      type(font-family) == str and font-family in typefaces,
+      message: "El parámetro typeface debe ser uno de los siguientes: "
+        + typefaces.keys().join(", ", last: " o ") + ".",
     )
+    typefaces.at(font-family)
+  } else {
+    assert(type(typeface-options) == dictionary, message: "typeface-options debe ser un diccionario.")
+    let roles = ("text", "display", "math", "mono")
+    let missing = roles.filter(role => role not in typeface-options)
+    assert(missing.len() == 0, message: "Faltan estas claves en typeface-options: " + missing.join(", ", last: " y ") + ".")
+    for role in roles {
+      let options = typeface-options.at(role)
+      let field = "typeface-options." + role
+      assert(type(options) == dictionary, message: field + " debe ser un diccionario.")
+      assert("font" in options, message: "Falta " + field + ".font.")
+      let font = options.font
+      assert(
+        type(font) == str or (type(font) == array and font.len() > 0 and font.all(name => type(name) == str)),
+        message: field + ".font debe ser un nombre de fuente o una lista de nombres.",
+      )
+      assert(role == "display" or "size" in options, message: "Falta " + field + ".size (por ejemplo, 11pt).")
+      if "size" in options {
+        assert(type(options.size) == length, message: field + ".size debe ser una longitud (por ejemplo, 11pt).")
+      }
+    }
+    typeface-options
   }
 
   info.font.update(selected-typeface)
-  info.font-family.update(typeface)
+  info.font-family.update(font-family)
 
   let print-layout-options = ("screen", "duplex", "simplex")
   assert(

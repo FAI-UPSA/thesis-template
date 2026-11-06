@@ -16,7 +16,7 @@
   import "info.typ"
   let typeface = info.font.get()
   show heading: set text(weight: "bold", style: "normal")
-  show heading.where(level: offset + 1): set text(font: typeface.display)
+  show heading.where(level: offset + 1): set text(..typeface.display)
   show heading.where(level: offset + 2): set align(center)
   show heading.where(level: offset + 4): set text(weight: "bold", style: "italic")
   show heading.where(level: offset + 6): set text(weight: "bold", style: "italic")
@@ -129,11 +129,11 @@
         _,
         it,
       ) => text(
-        font: typeface.display,
         tracking: 0.2em,
         fill: gray.darken(40%),
         weight: "bold",
         upper(it.body),
+        ..typeface.display,
       ),
     ),
   )

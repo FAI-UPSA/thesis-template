@@ -40,7 +40,7 @@
   let info-size = typeface.text.size * meta-scale
 
   set text(
-    font: typeface.display,
+    ..typeface.display,
   )
 
   show title: set text(

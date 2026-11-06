@@ -27,9 +27,9 @@
     )
 
     set text(
-      font: typeface.display,
       weight: "bold",
       hyphenate: false,
+      ..typeface.display,
     )
 
     set par(justify: false)
@@ -48,13 +48,13 @@
         -90deg,
         reflow: true,
         box(
-          text(title, font: typeface.display, size: 22pt, weight: "bold"),
+          text(title, size: 22pt, weight: "bold", ..typeface.display),
           width: 90%,
         ),
       ),
       {
         if volumes > 1 {
-          text(size: 24pt, font: typeface.display, weight: "bold")[
+          text(size: 24pt, weight: "bold", ..typeface.display)[
             #numbering("I", n)
           ]
           parbreak()

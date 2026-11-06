@@ -15,10 +15,10 @@
     set block(spacing: if is-part { 1.5em } else { 1.3em })
 
     set text(
-      font: if is-part { typeface.text.font } else { typeface.display },
       size: 1.25em,
       weight: if is-part { 700 } else { 600 },
       tracking: 0.025em,
+      ..if is-part { (font: typeface.text.font) } else { typeface.display },
     )
 
     // Keep each entry in native paragraph flow. Grid cells export generic
@@ -68,16 +68,12 @@
       } else {
         "regular"
       },
-      font: if el.supplement == [Sección] {
-        typeface.display
-      } else {
-        typeface.text.font
-      },
       style: if el.supplement == [Subsubsección] {
         "italic"
       } else {
         "normal"
       },
+      ..if el.supplement == [Sección] { typeface.display } else { (font: typeface.text.font) },
     )
 
     link(el.location(), it.indented(

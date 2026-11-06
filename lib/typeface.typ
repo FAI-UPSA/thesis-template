@@ -4,7 +4,7 @@
     weight: 450,
     size: 10.5pt,
   ),
-  display: "IBM Plex Sans",
+  display: (font: "IBM Plex Sans"),
   math: (
     font: "IBM Plex Math",
     weight: 450,
@@ -22,7 +22,7 @@
     font: "New Computer Modern",
     size: 11pt,
   ),
-  display: "New Computer Modern Sans",
+  display: (font: "New Computer Modern Sans"),
   math: (
     font: "New Computer Modern Math",
     size: 11pt,
@@ -38,7 +38,7 @@
     font: "Reforma 1918",
     size: 11pt,
   ),
-  display: "Reforma 2018",
+  display: (font: "Reforma 2018"),
   math: (
     font: "TeX Gyre Pagella Math",
     size: 11pt,
@@ -55,7 +55,7 @@
     font: "Source Serif 4",
     size: 10.5pt,
   ),
-  display: "Source Sans 3",
+  display: (font: "Source Sans 3"),
   math: (
     font: "STIX Two Math",
     size: 10.5pt,
@@ -71,7 +71,7 @@
     font: "Alegreya",
     size: 11pt,
   ),
-  display: "Alegreya Sans",
+  display: (font: "Alegreya Sans"),
   math: (
     font: "TeX Gyre Pagella Math",
     size: 11pt,
@@ -87,7 +87,7 @@
     font: "Piazzolla",
     size: 11pt,
   ),
-  display: "Piazzolla",
+  display: (font: "Piazzolla"),
   math: (
     font: "TeX Gyre Schola Math",
     size: 11pt,
@@ -103,7 +103,7 @@
     font: "Andada Pro",
     size: 11pt,
   ),
-  display: "Andada Pro",
+  display: (font: "Andada Pro"),
   math: (
     font: "TeX Gyre Bonum Math",
     size: 11pt,
@@ -119,7 +119,7 @@
     font: "Helvetica",
     size: 10.5pt,
   ),
-  display: "Helvetica",
+  display: (font: "Helvetica"),
   math: (
     font: "Lete Sans Math",
     size: 10.5pt,
@@ -135,7 +135,7 @@
     font: "Helvetica Neue",
     size: 10.5pt,
   ),
-  display: "Helvetica Neue",
+  display: (font: "Helvetica Neue"),
   math: (
     font: "Lete Sans Math",
     size: 10.5pt,
@@ -151,7 +151,7 @@
     font: "Times New Roman",
     size: 11pt,
   ),
-  display: "Times New Roman",
+  display: (font: "Times New Roman"),
   math: (
     font: "TeX Gyre Termes Math",
     size: 11pt,
@@ -167,7 +167,7 @@
     font: "TeX Gyre Termes",
     size: 11pt,
   ),
-  display: "TeX Gyre Termes",
+  display: (font: "TeX Gyre Termes"),
   math: (
     font: "TeX Gyre Termes Math",
     size: 11pt,
@@ -183,7 +183,7 @@
     font: "TeX Gyre Heros",
     size: 10.5pt,
   ),
-  display: "TeX Gyre Heros",
+  display: (font: "TeX Gyre Heros"),
   math: (
     font: "Lete Sans Math",
     size: 10.5pt,
@@ -199,7 +199,7 @@
     font: "Arial",
     size: 10.5pt,
   ),
-  display: "Arial",
+  display: (font: "Arial"),
   math: (
     font: "Luciole Math",
     size: 10.5pt,

@@ -8,6 +8,8 @@
     "tinymist.fontPaths": [
         "${workspaceFolder}/assets/fonts"
     ],
+    "tinymist.onPaste": "$root/assets/images",
+    "tinymist.copyAndPaste": "enable",
     // "tinymist.exportTarget": "bundle",
     // "tinymist.previewFeature": "enable",
     // "tinymist.syntaxOnly": "auto",

@@ -1,14 +1,11 @@
-= Kit de inicio para trabajos de grado en Typst — UPSA
+= Kit de inicio para trabajos de grado en Typst
 Jassiel O._F.
 :source-highlighter: highlight.js
-:linkcss:
 :icons: font
-:!copycss:
 :toc: auto
 :sectanchors:
 :experimental:
-:stylesdir: https://jassielof.github.io/asciidoctor-styles/
-:stylesheet: vivienne.css
+:toc-title: Índice
 :repo-url: https://github.com/jassielof/upsa-bolivia-thesis-starter
 
 Kit de inicio para elaborar trabajos de grado de la Universidad Privada de Santa Cruz de la Sierra (UPSA) mediante https://typst.app/[Typst]. Incluye documentos de ejemplo, recursos, tareas de compilación y una plantilla reutilizable para mantener la consistencia de la presentación académica.

@@ -66,24 +66,6 @@
   ),
 )
 
-#let inter = (
-  text: (
-    font: "Inter",
-    stylistic-set: (3, 2),
-    size: 10pt,
-    discretionary-ligatures: true,
-  ),
-  display: "Inter",
-  math: (
-    font: "Lete Sans Math",
-    size: 10pt,
-  ),
-  mono: (
-    font: ("Consolas", "Inconsolata", "Inconsolata EX"),
-    size: 10pt,
-  ),
-)
-
 #let alegreya = (
   text: (
     font: "Alegreya",
@@ -228,7 +210,7 @@
   ),
 )
 
-#let default = reforma
+#let default = alegreya
 
 #let typefaces = (
   "Reforma": reforma,
@@ -244,12 +226,4 @@
   "Andada": andada,
   "IBM Plex": ibm-plex,
   "New Computer Modern": new-computer-modern,
-  "Inter": inter,
 )
-
-#let extra = (
-  ..typefaces,
-  "Inter": inter,
-)
-
-#let get(name) = extra.at(name, default: reforma)

@@ -1,3 +1,5 @@
+#import "typeface.typ": typefaces
+
 // Define la configuración general de la plantilla.
 #let settings(
   /// Nombre del estudiante autor del trabajo de grado.
@@ -101,16 +103,23 @@
   )
   info.paper-size.update(paper-size)
 
-  import "typeface.typ": extra as typeface-options-inter, get as get-typeface, typefaces as typeface-options
-  // TODO: I feel that rather than fixing it in these stricted fontset, the fontset could be provided to the users, so they can automatically choose from the dictionary, and if they want reconstruct the dictionary with their own fonts. Though since the template library is always subcloned, they can automatically change it directly.
-  assert(
-    typeface in typeface-options-inter.keys(),
-    message: "El tipo de letra (typeface) debe ser uno de los siguientes: "
-      + typeface-options.keys().join(", ", last: " o ")
-      + ".",
+  let direct-typeface = (
+    ("text", "display", "math", "mono").all(key => key in typeface-options)
+    and type(typeface-options.display) in (str, array)
   )
+  let selected-typeface = if direct-typeface {
+    typeface-options
+  } else if typeface in typeface-options {
+    typeface-options.at(typeface)
+  } else {
+    panic(
+      "El tipo de letra (typeface) debe ser uno de los siguientes: "
+        + typeface-options.keys().join(", ", last: " o ")
+        + ".",
+    )
+  }
 
-  info.font.update(get-typeface(typeface))
+  info.font.update(selected-typeface)
   info.font-family.update(typeface)
 
   let print-layout-options = ("screen", "duplex", "simplex")

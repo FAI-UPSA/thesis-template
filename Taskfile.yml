@@ -5,22 +5,8 @@ env:
   TYPST_FONT_PATHS: assets/fonts
 tasks:
   default:
-    aliases:
-      - bime-book
-      - book
     deps:
-      - thesis
-    env:
-      TYPST_FEATURES: bundle
-    desc: Genera los documentos requeridos para la BIME
-    cmds:
-      - typst compile --format bundle --pdf-standard ua-1,a-3a template/book.typ
-    sources:
-      - "template/**/*.typ"
-      - template/book.typ
-    generates:
-      - template/book/**/*.pdf
-      - template/book/**/*.bib
+    - thesis
   thesis:
     aliases:
       - tfg
@@ -30,6 +16,6 @@ tasks:
     sources:
       - "template/**/*.typ"
       - "assets/images/**/*"
-      - "template/**/*.typ"
+      - "lib/**/*.typ"
     generates:
       - template/thesis.pdf

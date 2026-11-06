@@ -6,11 +6,11 @@ Jassiel O._F.
 :sectanchors:
 :experimental:
 :toc-title: Índice
-:repo-url: https://github.com/jassielof/upsa-bolivia-thesis-starter
+:repo-url: https://github.com/FAI-UPSA/thesis-starter
 
 Kit de inicio para elaborar trabajos de grado de la Universidad Privada de Santa Cruz de la Sierra (UPSA) mediante https://typst.app/[Typst]. Incluye documentos de ejemplo, recursos, tareas de compilación y una plantilla reutilizable para mantener la consistencia de la presentación académica.
 
-IMPORTANT: Este proyecto es una iniciativa independiente, disponible para evaluación y uso voluntario. No constituye una plantilla oficial aprobada por la UPSA. Los requisitos del Reglamento de Graduación y las indicaciones de la carrera o del asesor tienen prioridad sobre las configuraciones del kit.
+Los documentos incluidos son ejemplos que podés adaptar a los requisitos de tu carrera y a las indicaciones de tu asesor.
 
 == Primeros pasos
 
@@ -54,37 +54,29 @@ Si descargás el repositorio como ZIP, tené en cuenta que GitHub no incorpora a
 . Comprobá la disponibilidad de las fuentes necesarias en `assets/fonts`.
 . Abrí el documento de ejemplo que quieras utilizar y reemplazá sus datos.
 
-La configuración de parámetros, funciones y estilos se explica en el link:template/upsa-bo/README.md[README de la plantilla]. Este archivo se concentra en el uso del kit de inicio.
+La configuración de parámetros, funciones y estilos se explica en el https://github.com/FAI-UPSA/thesis-template[README de la plantilla]. Este archivo se concentra en el uso del kit de inicio.
 
 == Documentos y compilación
 
-[cols="1,2,1",options="header"]
+[%autowidth]
 |===
 |Documento |Archivo principal |Tarea
 
 |Trabajo de grado
-|`documents/thesis/TFG.typ`
+|`documents/thesis/thesis.typ`
 |`task thesis`
 
 |Plan de trabajo
-|`documents/plan/TFG-PLAN.typ`
-|`task plan`
+|`documents/proposal/proposal.typ`
+|`task proposal`
 
 |Estudio de factibilidad
 |`documents/feasibility/study.typ`
 |`task study`
 
-|Resumen
-|`documents/abstract/abstract.typ`
-|`task abstract`
-
-|Cubierta
-|`documents/book/front-cover.typ`
-|`task front-cover`
-
-|Lomo
-|`documents/book/spine-cover.typ`
-|`task spine-cover`
+|Entrega BIME, con resumen, cubierta, lomo y registros bibliográficos
+|`documents/bime/book.typ`
+|`task bime`
 
 |Currículum
 |`documents/cv/CV.typ`
@@ -99,7 +91,7 @@ Por ejemplo, para generar el plan de trabajo desde la raíz del repositorio:
 
 [source,shell]
 ----
-typst compile --root . --font-path assets/fonts documents/plan/TFG-PLAN.typ
+typst compile --root . --font-path assets/fonts documents/proposal/proposal.typ
 ----
 
 El comando utiliza la raíz del proyecto para resolver los archivos y agrega `assets/fonts` como directorio de búsqueda de fuentes.
@@ -113,13 +105,19 @@ Si instalaste Task, podés generar los documentos con sus tareas correspondiente
 [source,shell]
 ----
 task thesis
-task plan
+task proposal
 task study
 ----
 
 Consultá `Taskfile.yaml` para conocer los comandos, argumentos y destinos de salida.
 
-Las tareas que no indican un destino explícito generan el PDF junto al archivo fuente. El estudio de factibilidad se compila mediante `task study`.
+Las tareas que no indican un destino explícito generan el PDF junto al archivo fuente.
+
+=== Exportar la entrega BIME como Bundle
+
+Desde la raíz del Starter Kit, ejecutá `task bime`. La tarea habilita la función experimental `bundle` de la CLI de Typst y usa `documents/bime/book.typ` para reunir el informe, el resumen BIME, la cubierta, el lomo y los registros BibLaTeX y Hayagriva. Los archivos generados quedan en `documents/bime/book/`.
+
+La inicialización predeterminada de la plantilla en Typst Universe contiene el informe y su bibliografía. Para generar la entrega agrupada, usá el archivo `book.typ` y la tarea incluidos en el Starter Kit.
 
 == Recursos y estructura
 
@@ -147,22 +145,13 @@ Los documentos incluidos son ejemplos de uso. Sus configuraciones deben comproba
 
 === Tipografía
 
-El conjunto tipográfico inicial propuesto es TeX Gyre:
-
-* *Termes*: texto principal con serifas.
-* *Heros*: títulos y encabezados sin serifas.
-* *Cursor*: código y texto monoespaciado.
-* *Termes Math*: expresiones matemáticas.
-
-Este conjunto constituye una alternativa técnica a las fuentes mencionadas en el Reglamento de Graduación, pero su uso académico está pendiente de evaluación y autorización institucional.
-
-Las fuentes distribuidas con el proyecto deben conservar sus correspondientes condiciones de licencia y atribución.
+Alegreya es el conjunto predeterminado de la plantilla. Las fuentes de los ejemplos están en `assets/fonts`, y las tareas ya apuntan a esa carpeta. Si compilás directamente, pasá esa ruta con `--font-path assets/fonts`. Podés cambiar el conjunto de un documento con `typeface`.
 
 === Capítulos y partes
 
 La organización por partes del ejemplo original responde a las particularidades de un proyecto desarrollado mediante la metodología ICONIX. No representa una estructura obligatoria para otros trabajos.
 
-Se prevé adoptar los capítulos como estructura predeterminada y permitir partes mediante una configuración opcional, sujeta a aclaración académica.
+Los capítulos son la estructura predeterminada. Para agruparlos en partes, activá `multi-part: true` en la configuración del documento y agregá `#part[Título]` donde corresponda.
 
 La jerarquía de encabezados debe ser semánticamente correcta en ambas modalidades. Si aparecen errores durante las comprobaciones de accesibilidad, es necesario corregir la estructura del documento y no simplemente desactivar las comprobaciones.
 
@@ -190,8 +179,6 @@ Si utilizás carpetas sincronizadas con OneDrive o Google Drive, evitá modifica
 
 El repositorio incluye un flujo de automatización que compila los documentos y permite descargar el contenido de `out` como artefacto desde la ejecución de GitHub Actions.
 
-Actualmente, este flujo no publica los documentos en GitHub Pages.
-
 Si incorporás nuevos documentos o modificás sus destinos de salida, comprobá que los archivos generados queden incluidos en el artefacto descargable.
 
 No publiques repositorios, documentos o artefactos que contengan información confidencial sin revisar previamente sus permisos de acceso.
@@ -200,9 +187,7 @@ No publiques repositorios, documentos o artefactos que contengan información co
 
 Como recurso complementario, se encuentra disponible la link:https://jassielof.github.io/typst/[traducción no oficial al español de la documentación de Typst], con una versión web y una descarga en PDF.
 
-Esta traducción fue elaborada con asistencia de herramientas de inteligencia artificial. Ante diferencias o dudas de interpretación, prevalece la https://typst.app/docs/[documentación oficial de Typst].
-
-Para conocer los parámetros y las funciones de esta plantilla, consultá su link:template/upsa-bo/README.md[documentación técnica].
+Para conocer los parámetros y las funciones de esta plantilla, consultá su https://github.com/FAI-UPSA/thesis-template[documentación de la plantilla].
 
 == Dudas y problemas
 
@@ -219,6 +204,6 @@ Evitá publicar datos personales, información confidencial de investigaciones o
 
 == Licencias y avisos de terceros
 
-El kit de inicio como tal se distribuye bajo la licencia link:./LICENSE.txt[CC BY-NC-SA 4.0]. La plantilla de Typst incluida como submódulo se distribuye bajo su propia licencia. Mas cabe recalcar, que esta licencia solo cubre la plantilla y estructura del repositorio como tal.
+El kit de inicio como tal se distribuye bajo la licencia {repo-url}/blob/main/LICENSE.txt[CC BY-NC-SA 4.0]. La plantilla de Typst incluida como submódulo se distribuye bajo su propia licencia. Mas cabe recalcar, que esta licencia solo cubre la plantilla y estructura del repositorio como tal.
 
-Los avisos de terceros sobre las fuentes tipográficas redistribuidas se encuentran (en inglés) en link:NOTICE.adoc[]
+Los avisos de terceros sobre las fuentes tipográficas redistribuidas se encuentran (en inglés) en {repo-url}/blob/main/NOTICE.adoc[NOTICE.adoc]

@@ -13,6 +13,9 @@
     // "tinymist.exportTarget": "bundle",
     // "tinymist.previewFeature": "enable",
     // "tinymist.syntaxOnly": "auto",
+    "files.exclude": {
+        "assets/fonts": true
+    },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.typ": "${capture}.pdf, ${capture}-*.pdf, ${capture}.svg",

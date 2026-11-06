@@ -20,7 +20,7 @@ keywords = [
 ]
 categories = ["thesis"]
 disciplines = ["computer-science", "engineering", "business", "psychology", "communication"]
-exclude = ["*.pdf", "reference"]
+exclude = ["*.pdf", ".gitignore", ".github", "Taskfile.yaml"]
 
 [template]
 path = "template"

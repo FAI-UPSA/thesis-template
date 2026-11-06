@@ -29,7 +29,9 @@
   /// Abreviatura de la modalidad del trabajo de grado (por ejemplo: PG, TL, TD, etc.)
   modality-acronym: none,
   /// El tipo de letra a usar.
-  typeface: "Reforma",
+  typeface: "Alegreya",
+  /// Diccionario de conjuntos por nombre, o un conjunto directo con text, display, math y mono.
+  typeface-options: typefaces,
   /// El formato de impresión del documento.
   ///
   /// - "screen" para PDF (márgenes simétricos).

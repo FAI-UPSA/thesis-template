@@ -1,9 +1,6 @@
 documents/**/*.pdf
 documents/**/*.svg
+documents/book/
 documents/**/*.png
 .task/
-www/
-web/
-archival/
-accessibility/
 thumbnail.*

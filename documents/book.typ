@@ -5,7 +5,7 @@
 #document(
   "thesis.pdf",
   {
-    include "/documents/thesis/thesis.typ"
+    include "/documents/thesis.typ"
     // Se necesita actualizar el formato de impresión a duplex o simplex si en el documento principal no se especifica.
     print-layout-state.update("duplex")
   },

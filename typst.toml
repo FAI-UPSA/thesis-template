@@ -20,7 +20,16 @@ keywords = [
 ]
 categories = ["thesis"]
 disciplines = ["computer-science", "engineering", "business", "psychology", "communication"]
-exclude = ["*.pdf", "assets/fonts", ".gitignore", ".github", "Taskfile.yaml"]
+exclude = [
+  ".github",
+  ".vscode",
+  "assets/fonts",
+  ".git*",
+  "*.pdf",
+  "documents/feasibility/",
+  "documents/book/*",
+  "Taskfile.yaml",
+]
 
 [template]
 path = "template"

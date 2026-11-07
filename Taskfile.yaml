@@ -12,13 +12,13 @@ tasks:
   cv:
     desc: Genera el documento de Curriculum Vitae
     cmds:
-      - typst compile documents/cv/CV.typ
-      - typst compile --format svg documents/cv/CV.typ
+      - typst compile documents/cv.typ
+      - typst compile --format svg documents/cv.typ
     sources:
-      - documents/cv/CV.typ
+      - documents/cv.typ
     generates:
-      - documents/cv/CV.pdf
-      - documents/cv/CV.svg
+      - documents/cv.pdf
+      - documents/cv.svg
   bime:
     aliases:
       - bime-book
@@ -29,24 +29,24 @@ tasks:
       TYPST_FEATURES: bundle
     desc: Genera los documentos requeridos para la BIME
     cmds:
-      - typst compile --format bundle --pdf-standard ua-1,a-3a documents/bime/book.typ
+      - typst compile --format bundle --pdf-standard ua-1,a-3a documents/book.typ
     sources:
       - "template/**/*.typ"
-      - "documents/bime/book.typ"
+      - "documents/book.typ"
     generates:
-      - "documents/bime/book/**/*.pdf"
-      - "documents/bime/book/**/*.bib"
+      - "documents/book/**/*.pdf"
+      - "documents/book/**/*.bib"
   proposal:
     desc: Genera el documento de plan de trabajo
     cmds:
-      - typst compile documents/proposal/proposal.typ
+      - typst compile documents/proposal.typ
     sources:
-      - documents/proposal/proposal.typ
-      - "documents/proposal/**/*.typ"
+      - documents/proposal.typ
+      - "documents/**/*.typ"
       - "assets/images/**/*"
       - "template/**/*.typ"
     generates:
-      - documents/proposal/proposal.pdf
+      - documents/proposal.pdf
   thesis:
     aliases:
       - tfg
@@ -54,14 +54,14 @@ tasks:
       - cv
     desc: Genera la tesis o documento principal del trabajo de grado
     cmds:
-      - typst compile --pdf-standard ua-1,a-3a documents/thesis/thesis.typ
+      - typst compile --pdf-standard ua-1,a-3a documents/thesis.typ
     sources:
-      - "documents/thesis/**/*.typ"
+      - "documents/**/*.typ"
       - "data/ref.haya.yaml"
       - "assets/images/**/*"
       - "template/**/*.typ"
     generates:
-      - documents/thesis/thesis.pdf
+      - documents/thesis.pdf
   study:
     desc: Genera el documento de estudio de factibilidad
     cmds:

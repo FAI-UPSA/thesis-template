@@ -371,7 +371,7 @@ El contenido de `quote` conserva una atribución explícita. Para una cita real 
 #show: back-matter.with()
 
 #bibliography(
-  ("../bibliography/ref.haya.yaml", "../bibliography/ref.bib"),
+  ("bibliography/ref.haya.yaml", "bibliography/ref.bib"),
   style: "ieee",
   full: true,
 )
@@ -379,7 +379,7 @@ El contenido de `quote` conserva una atribución explícita. Para una cita real 
 = Curriculum Vitae
 
 #image(
-  "/documents/cv/CV.svg",
+  "cv.svg",
   alt: "Curriculum Vitae",
   height: 1fr,
 )

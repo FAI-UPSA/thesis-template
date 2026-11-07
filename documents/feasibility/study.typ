@@ -15,7 +15,7 @@
 
 #front-matter()
 
-#show: main-matter.with()
+#show: main-matter
 
 #set heading(offset: 1)
 
@@ -34,10 +34,10 @@
 #include "chapters/13.evaluación económica y financiera.typ"
 #include "chapters/14.conclusiones y recomendaciones.typ"
 
-#show: back-matter.with()
+#show: back-matter
 
 #bibliography(
-  "../bibliography/ref.haya.yaml",
+  "bibliography/ref.haya.yaml",
   style: "ieee",
   title: [Bibliografía],
   full: true,

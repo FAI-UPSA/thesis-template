@@ -1,3 +1,12 @@
+/// Fuentes adicionales:
+///
+/// - https://quoteunquoteapps.com/courierprime/
+/// - https://www.gust.org.pl/projects/e-foundry/tg-math
+/// - https://luciole-vision.com/en/math.html
+/// - https://github.com/abccsss/LeteSansMath/
+/// - https://www.tiro.com/fonts/stix-two
+/// - https://github.com/MihailJP/Inconsolata-LGC
+
 #let ibm-plex = (
   text: (
     font: "IBM Plex Serif",

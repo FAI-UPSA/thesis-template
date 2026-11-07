@@ -57,7 +57,7 @@ tasks:
       - typst compile --pdf-standard ua-1,a-3a documents/thesis/thesis.typ
     sources:
       - "documents/thesis/**/*.typ"
-      - "data/bib.haya.yaml"
+      - "data/ref.haya.yaml"
       - "assets/images/**/*"
       - "template/**/*.typ"
     generates:

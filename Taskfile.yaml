@@ -31,7 +31,8 @@ tasks:
     cmds:
       - typst compile --format bundle --pdf-standard ua-1,a-3a documents/book.typ
     sources:
-      - "template/**/*.typ"
+      - "lib.typ"
+      - "lib/**/*.typ"
       - "documents/book.typ"
     generates:
       - "documents/book/**/*.pdf"
@@ -43,8 +44,7 @@ tasks:
     sources:
       - documents/proposal.typ
       - "documents/**/*.typ"
-      - "assets/images/**/*"
-      - "template/**/*.typ"
+      - "documents/assets/images/**/*"
     generates:
       - documents/proposal.pdf
   thesis:
@@ -58,8 +58,9 @@ tasks:
     sources:
       - "documents/**/*.typ"
       - "data/ref.haya.yaml"
-      - "assets/images/**/*"
-      - "template/**/*.typ"
+      - "documents/assets/images/**/*"
+      - "lib.typ"
+      - "lib/**/*.typ"
     generates:
       - documents/thesis.pdf
   study:
@@ -70,5 +71,6 @@ tasks:
       - documents/feasibility/study.pdf
     sources:
       - "documents/feasibility/**/*.typ"
-      - "template/**/*.typ"
-      - "assets/images/**/*"
+      - "lib.typ"
+      - "lib/**/*.typ"
+      - "documents/assets/images/**/*"

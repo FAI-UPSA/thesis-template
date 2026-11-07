@@ -42,17 +42,19 @@
 
     // An inline-only block keeps the label in the heading's structure,
     // without introducing a nested paragraph beside the title block.
-    if it.numbering != none and it.outlined { block[
-      #set text(
-        size: 2.5em,
-        fill: gray.darken(40%),
-      )
-      #it.supplement
-      #text(
-        size: 1.25em,
-        counter(heading).display(it.numbering),
-      )
-    ] }
+    if it.numbering != none and it.outlined {
+      block[
+        #set text(
+          size: 2.5em,
+          fill: gray.darken(40%),
+        )
+        #it.supplement
+        #text(
+          size: 1.25em,
+          counter(heading).display(it.numbering),
+        )
+      ]
+    }
 
     block(
       width: 100%,
@@ -200,42 +202,9 @@
 
   show quote.where(block: true): set block(spacing: 1.5em)
 
-  // TODO: Move this as an APA quote function and use wordometer
-  import "@preview/wordometer:0.1.6": word-count
+  import "apa.typ": apa-quote
 
-  show quote: it => word-count(total => {
-    let is-block = total.words >= 40
-
-    let attribution = if it.attribution == none {
-      none
-    } else if type(it.attribution) == label {
-      cite(it.attribution)
-    } else {
-      it.attribution
-    }
-
-    if is-block {
-      block(
-        inset: (left: 0.5in, rest: 0pt),
-        outset: 0pt,
-      )[
-        #set par(first-line-indent: 0pt)
-        #set text(size: typeface.text.size * 0.95)
-
-        #it.body
-        #if attribution != none {
-          h(0.3em)
-          attribution
-        }
-      ]
-    } else {
-      ["#it.body"]
-
-      if attribution != none {
-        [~g#attribution]
-      }
-    }
-  })
+  show quote: it => apa-quote(it)
 
   // Art. 144: Encabezamientos
   // Todo escrito deberá incluir encabezados para destacar los subtemas de la investigación. Para ello se deberá considerar un espacio adicional antes y después de cada encabezado. Se podrá remarcar los encabezados con negrillas, en cuyo caso solo se necesita un espacio antes del encabezado.
@@ -295,18 +264,20 @@
     // numbering must follow the document's parts rather than that reset.
     let part-number = query(heading.where(level: 1, supplement: [Parte]).before(here())).len() + 1
     heading(
-      level: 1, offset: 0,
+      level: 1,
+      offset: 0,
       numbering: (..numbers) => numbering("I", part-number),
-      body, supplement: [Parte],
+      body,
+      supplement: [Parte],
     )
     if info.in-back-matter.get() {
       // A back-matter divider must not advance the alphabetic appendix counter.
       let appendices = query(heading.where(level: 1, supplement: [Anexo]).before(here()))
-        .filter(it => it.numbering != none).len()
+        .filter(it => it.numbering != none)
+        .len()
       counter(heading).update(appendices)
     } else {
-      let chapters = query(heading.where(level: 2).before(here()))
-        .filter(it => it.numbering != none).len()
+      let chapters = query(heading.where(level: 2).before(here())).filter(it => it.numbering != none).len()
       counter(heading).update((part-number, chapters))
     }
     pagebreak(weak: true)

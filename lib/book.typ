@@ -53,13 +53,25 @@
         ),
       ),
       {
+        import "@preview/datify:1.3.0": custom-date-format
+
         if volumes > 1 {
           text(size: 24pt, weight: "bold", ..typeface.display)[
             #numbering("I", n)
           ]
           parbreak()
         }
-        text(size: 20pt)[#year]
+
+        text(
+          size: 20pt,
+          number-type: "lining",
+          number-width: "tabular",
+          custom-date-format(
+            year,
+            pattern: "yyyy",
+            lang: text.lang,
+          ),
+        )
       },
     )
 

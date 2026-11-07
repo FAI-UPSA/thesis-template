@@ -25,13 +25,15 @@ exclude = [
   ".vscode",
   "assets/fonts",
   ".git*",
-  "*.pdf",
+  "documents/*.pdf",
+  "documents/*.svg",
   "documents/feasibility/",
-  "documents/book/*",
+  "documents/book/",
+  "NOTICE*",
   "Taskfile.yaml",
 ]
 
 [template]
-path = "template"
+path = "documents"
 entrypoint = "thesis.typ"
 thumbnail = "thumbnail.png"

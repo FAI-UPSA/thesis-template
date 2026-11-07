@@ -1,4 +1,4 @@
-#import "/template/lib.typ": back-matter, front-matter, main-matter, part, settings
+#import "/lib.typ": back-matter, front-matter, main-matter, part, settings
 #import "@preview/mitex:0.2.7": mitex
 #import "@preview/cetz:0.5.3": canvas, draw
 
@@ -371,7 +371,7 @@ El contenido de `quote` conserva una atribución explícita. Para una cita real 
 #show: back-matter.with()
 
 #bibliography(
-  ("/data/ref.haya.yaml", "/data/ref.bib"),
+  ("../bibliography/ref.haya.yaml", "../bibliography/ref.bib"),
   style: "ieee",
   full: true,
 )

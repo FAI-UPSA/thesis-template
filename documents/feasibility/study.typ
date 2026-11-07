@@ -1,4 +1,4 @@
-#import "/template/lib.typ": back-matter, front-matter, main-matter, settings
+#import "/lib.typ": back-matter, front-matter, main-matter, settings
 
 #show: settings.with(
   graduation-work-info: (
@@ -37,7 +37,7 @@
 #show: back-matter.with()
 
 #bibliography(
-  "/data/ref.haya.yaml",
+  "../bibliography/ref.haya.yaml",
   style: "ieee",
   title: [Bibliografía],
   full: true,

@@ -1,4 +1,4 @@
-#import "/template/lib.typ": (
+#import "/lib.typ": (
   bime-abstract, book-front-cover, book-spine-cover, generate-biblatex, generate-hayagriva, print-layout-state,
 )
 

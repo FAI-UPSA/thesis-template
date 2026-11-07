@@ -104,7 +104,7 @@
   if raw.contains(",") {
     return raw.split(",").map(s => s.trim()).join(", ")
   }
-  
+
   let s = raw
   let multi-particles = (
     (" de la ", " de~la "),
@@ -250,10 +250,6 @@
 /// - author: Autor en formato "Apellidos, Nombres".
 /// - citation-key: Clave personalizada de citación.
 /// - call-number: Signatura topográfica de la biblioteca.
-/// - archive: Biblioteca que conserva la tesis.
-/// - archive-location: Localización de la biblioteca.
-/// - publisher-short: Abreviatura de la institución editora.
-/// - edition: Edición de la obra, si corresponde.
 /// - supervisor-role: Rol Hayagriva del supervisor.
 #let generate-hayagriva(
   author: none,

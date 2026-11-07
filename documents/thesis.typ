@@ -5,7 +5,6 @@
 #let multi-part = false
 
 #show: settings.with(
-  typeface: "Alegreya",
   author-name: "Jassiel Ovando Franco",
   author-university-id: 2021117600,
   work-title: [El título de esta tesis es «Esperanza»],

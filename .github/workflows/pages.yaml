@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish:
-    if: github.repository == 'FAI-UPSA/thesis-starter' && github.ref == 'refs/heads/main'
+    if: github.repository == 'FAI-UPSA/thesis-template' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       pages: write

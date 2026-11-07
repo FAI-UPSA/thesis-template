@@ -128,13 +128,10 @@
   if n <= 1 {
     raw
   } else if n == 2 {
-    // "Nicole Numberg" -> "Numberg, Nicole"
     tokens.at(1) + ", " + tokens.at(0)
   } else if n == 3 {
-    // "Jassiel Ovando Franco" -> "Ovando Franco, Jassiel"
     tokens.slice(1).join(" ") + ", " + tokens.at(0)
   } else {
-    // "Ana Lía Rubin de Celis Clouzet" -> "Rubin de Celis Clouzet, Ana Lía"
     tokens.slice(n - 2).join(" ") + ", " + tokens.slice(0, n - 2).join(" ")
   }
 }

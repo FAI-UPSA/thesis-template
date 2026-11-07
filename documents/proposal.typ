@@ -3,7 +3,7 @@
 
 #set document(
   title: [El título de esta propuesta de tesis es «Esperanza»],
-  author: "Jassiel Ovando Franco",
+  author: "Jassiel Ovando",
   description: lorem(100),
   keywords: ("UPSA", "tesis"),
 )

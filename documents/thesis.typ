@@ -5,10 +5,10 @@
 #let multi-part = false
 
 #show: settings.with(
-  author-name: "Jassiel Ovando Franco",
-  author-university-id: 2021117600,
+  author-name: "Jassiel Ovando",
+  author-university-id: 2021123456,
   work-title: [El título de esta tesis es «Esperanza»],
-  author-email: "a2021117600@estudiantes.upsa.edu.bo",
+  author-email: "a2021123456@upsa.edu.bo",
   supervisor: [Dr. Juan Pérez],
   degree-level: [Licenciatura],
   degree-program: [Ingeniería de Sistemas],

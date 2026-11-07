@@ -55,7 +55,7 @@ Adicionalmente, la plantilla permite usar las siguientes fuentes proprietarias q
 
 #### Fuentes suplementarias
 
-Para mantener la consistencia visual con los conjuntos predeterminados, algunas fuentes no cuentan con variantes para fórmulas o código. En esos casos, la plantilla ya selecciona fuentes complementarias para mantener la coherencia tipográfica. Para revisar la lista completa de fuentes con sus variantes, consultá el archivo `lib/typeface.typ`.
+Para mantener la consistencia visual con los conjuntos predeterminados, algunas fuentes no cuentan con variantes para fórmulas o código. En esos casos, la plantilla ya selecciona fuentes complementarias para mantener la coherencia tipográfica. Para revisar la lista completa de fuentes con sus variantes, consultá el archivo de [Typefaces](lib/typeface.typ).
 
 ### Como instalar y usar fuentes
 

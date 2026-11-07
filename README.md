@@ -2,17 +2,9 @@
 
 Plantilla para documentos de grado de la Universidad Privada de Santa Cruz de la Sierra (UPSA), Bolivia.
 
-## Configuración y composición
+## Uso de la plantilla
 
-| Función | Qué ofrece |
-| --- | --- |
-| `settings` | Centraliza los metadatos, la tipografía y el tamaño de papel. Admite carta y A4, con márgenes para pantalla, impresión a una cara o impresión a doble cara. |
-| `front-matter` | Compone la portada, los resúmenes, las páginas preliminares opcionales y los índices. El índice del abstracto de facultad muestra los capítulos numerados. |
-| `main-matter` | Aplica estilos a capítulos, secciones, figuras, tablas, fórmulas, listados y citas textuales. |
-| `part` | Inserta una parte cuando `multi-part: true` está activo. Los encabezados `=` siguen representando capítulos y su numeración continúa entre partes. |
-| `back-matter` | Presenta la bibliografía como capítulo sin número y aplica numeración alfabética a los anexos. Sus secciones aparecen en el índice de anexos. |
-
-El índice general y el índice de anexos enlazan a sus encabezados. La jerarquía de encabezados también se refleja en los marcadores del PDF. Las referencias internas se actualizan cuando cambia la numeración.
+El documento principal de la plantilla es `thesis.typ`. Este documento funciona como un **Starter Kit** que a la vez sirve de ejemplo de como usar la plantilla.
 
 ## Recomendaciones de uso
 

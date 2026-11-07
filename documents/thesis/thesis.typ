@@ -371,7 +371,7 @@ El contenido de `quote` conserva una atribución explícita. Para una cita real 
 #show: back-matter.with()
 
 #bibliography(
-  ("/data/bib.haya.yaml", "/data/ref.bib"),
+  ("/data/ref.haya.yaml", "/data/ref.bib"),
   style: "ieee",
   full: true,
 )

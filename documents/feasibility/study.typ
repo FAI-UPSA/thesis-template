@@ -5,7 +5,7 @@
     title: [Estudio de factibilidad...],
   ),
   degree-info: (
-    program: [Ingeniería industrial y de sistemas]
+    program: [Ingeniería industrial y de sistemas],
   ),
   fonts: (
     body: "Source Serif 4",
@@ -37,7 +37,7 @@
 #show: back-matter.with()
 
 #bibliography(
-  "/data/bib.haya.yaml",
+  "/data/ref.haya.yaml",
   style: "ieee",
   title: [Bibliografía],
   full: true,

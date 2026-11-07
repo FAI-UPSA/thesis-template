@@ -67,6 +67,6 @@
 // #show: back-matter
 
 #pagebreak()
-#bibliography("/data/bib.haya.yaml", title: [Fuentes de información], full: true)
+#bibliography("/data/ref.haya.yaml", title: [Fuentes de información], full: true)
 
 #show: appendix

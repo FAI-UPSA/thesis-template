@@ -4,3 +4,4 @@ documents/book/
 documents/**/*.png
 .task/
 thumbnail.*
+universe/

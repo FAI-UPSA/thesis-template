@@ -8,4 +8,4 @@ The primary license governing this repository does not apply to the bundled font
 
 For licensing and copyright information, please refer to the license and notice files located in each font family's directory under `assets/fonts/`.
 
-*Note.* Archives are preserved in their originally extracted state.
+*Note.* Archives are preserved in their original form, but pruned to remove unnecessary files such as WOFF.

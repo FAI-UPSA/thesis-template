@@ -62,6 +62,8 @@ El ejemplo de currículum usa además Source Sans 3 y Source Serif 4; si no est�
 
 Se configura en cada documento. La plantilla incluye estilos APA y ASCE, además de funciones para generar referencias de tu trabajo en BibLaTeX y Hayagriva.
 
+El parámetro `supervisor` acepta un nombre único, que se muestra con el rol predeterminado «Guía», o una lista plana de pares rol y nombre. Por ejemplo, el Starter Kit muestra cómo añadir director, asesora y coasesor. Los pares aparecen en una tabla sin bordes en la portada y en la tabla del abstracto.
+
 ## Recursos y consultas
 
 - [Documentación de Typst en español](https://jassielof.github.io/typst/).

@@ -24,3 +24,24 @@
 #let font-family = state("font-family", "Alegreya")
 #let paper-size = state("paper-size", "us-letter")
 #let work-pages = state("work-pages", 0)
+
+#let supervisor-entries(value) = {
+  if value == none {
+    return ()
+  }
+
+  let entries = if type(value) == array { value } else { ([Guía], value) }
+  assert(calc.even(entries.len()), message: "supervisor debe ser un nombre o una lista de pares (rol, nombre).")
+  for index in range(0, entries.len(), step: 2) {
+    let role = entries.at(index)
+    let name = entries.at(index + 1)
+    assert(type(role) in (str, content), message: "Cada rol de supervisor debe ser texto o contenido.")
+    assert(type(name) in (str, content), message: "Cada nombre de supervisor debe ser texto o contenido.")
+  }
+  entries
+}
+
+#let supervisor-names(value) = {
+  let entries = supervisor-entries(value)
+  range(0, entries.len(), step: 2).map(index => entries.at(index + 1))
+}

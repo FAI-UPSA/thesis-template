@@ -14,7 +14,7 @@
   degree-level: none,
   /// Programa académico (carrera o especialidad) del grado a optar.
   degree-program: none,
-  /// Nombre del/os asesor/es o guía/s del trabajo de grado.
+  /// Nombre de una persona supervisora, o una lista plana de pares rol y nombre.
   supervisor: none,
   /// Título del trabajo de grado.
   work-title: none,

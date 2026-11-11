@@ -230,7 +230,7 @@
     keywords: formatted-keywords,
     degree: info.degree-level.get() + " en " + info.degree-program.get(),
     pagetotal: info.work-pages.final(),
-    supervisor: normalize-author(optional-string(info.supervisor.get())),
+    supervisor: normalize-author(optional-string(info.supervisor-names(info.supervisor.get()).join(", "))),
   )
 
   let biblatex = format-biblatex(
@@ -280,7 +280,7 @@
   let university = optional-string(info.university.get())
   let university-short = optional-string(info.university-short.get())
   let city = optional-string(info.city.get())
-  let supervisor = normalize-author(optional-string(info.supervisor.get()))
+  let supervisor = normalize-author(optional-string(info.supervisor-names(info.supervisor.get()).join(", ")))
   let abstract = optional-string(info.work-abstract.get())
 
   // Hayagriva thesis metadata.

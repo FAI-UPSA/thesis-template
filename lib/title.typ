@@ -111,12 +111,15 @@
   text(author, size: 1.15em)
 
   if supervisor != none {
-    set align(right)
+    set align(left)
     v(1fr)
 
-    [Director de #modality:]
-    linebreak()
-    text(supervisor)
+    table(
+      columns: 2,
+      stroke: none,
+      align: (right, left),
+      ..info.supervisor-entries(supervisor),
+    )
   }
 
   v(2fr)

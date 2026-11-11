@@ -54,7 +54,7 @@
   set align(center)
 
   show title: set text(
-    size: (body-size * (if is-front-cover { 1.35 } else { 1.25 })),
+    size: (body-size * (if is-front-cover { 1.3 } else { 1.2 })),
     weight: "medium",
     hyphenate: false,
     font: cover-title-typeface.font,
@@ -63,7 +63,7 @@
   show title: set block(
     above: 3em,
     width: 90%,
-    below: 1.5em,
+    below: 4em,
     // fill: luma(150),
   )
 
@@ -87,9 +87,9 @@
   block(
     width: 50%,
     {
-      set par(leading: 1em)
+      set par(leading: 0.75em)
       upper(text(modality, tracking: 0.1em, size: 1.05em))
-      v(2em)
+      v(1em)
       [para optar al grado de]
       v(2em)
       text(degree-level, size: 1.1em, style: "italic")
@@ -109,17 +109,6 @@
   v(0.5fr)
 
   text(author, size: 1.15em)
-
-  // if author-id != none and not is-front-cover {
-  //   v(1em)
-
-  //   text(
-  //     number-type: "lining",
-  //     number-width: "tabular",
-  //   )[
-  //     Código de estudiante: #author-id
-  //   ]
-  // }
 
   if supervisor != none {
     set align(right)

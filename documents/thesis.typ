@@ -7,7 +7,7 @@
 #show: settings.with(
   author-name: "Jassiel Ovando",
   author-university-id: 2021123456,
-  work-title: [El título de esta tesis es «Esperanza»],
+  work-title: [El título de este documento es «esperanza» y representa todo el esfuerzo de este camino],
   author-email: "a2021123456@upsa.edu.bo",
   supervisor: [Dr. Juan Pérez],
   degree-level: [Licenciatura],

@@ -15,7 +15,6 @@
   faculty: [Facultad de Ingeniería],
   modality: [Proyecto de Grado],
   modality-acronym: [PG],
-  faculty-acronym: [FAI],
   abstract: lorem(200),
   keywords: ("UPSA", "tesis"),
   date: datetime.today(),

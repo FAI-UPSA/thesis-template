@@ -10,7 +10,6 @@
   degree-level: [Licenciatura],
   degree-program: [Ingeniería industrial y de sistemas],
   faculty: [Facultad de Ingeniería],
-  faculty-acronym: [FAI],
   modality: [Proyecto de Grado],
   modality-acronym: [PG],
   abstract: [Reemplazá este texto con el resumen de tu estudio de factibilidad.],

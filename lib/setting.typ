@@ -10,8 +10,6 @@
   author-university-id: none,
   /// Afiliación factultativa institucional.
   faculty: none,
-  /// Acroónimo de la facultad.
-  faculty-acronym: none,
   /// Nivel del grado académico a optar.
   degree-level: none,
   /// Programa académico (carrera o especialidad) del grado a optar.
@@ -66,12 +64,6 @@
   info.faculty.update(faculty)
 
   assert(
-    faculty-acronym != none,
-    message: "El acrónimo de la facultad (faculty-acronym) es obligatorio.",
-  )
-  info.faculty-short.update(faculty-acronym)
-
-  assert(
     modality != none,
     message: "La modalidad del trabajo de grado (modality) es obligatoria.",
   )
@@ -115,14 +107,18 @@
     assert(
       type(font-family) == str and font-family in typefaces,
       message: "El parámetro typeface debe ser uno de los siguientes: "
-        + typefaces.keys().join(", ", last: " o ") + ".",
+        + typefaces.keys().join(", ", last: " o ")
+        + ".",
     )
     typefaces.at(font-family)
   } else {
     assert(type(typeface-options) == dictionary, message: "typeface-options debe ser un diccionario.")
     let roles = ("text", "display", "math", "mono")
     let missing = roles.filter(role => role not in typeface-options)
-    assert(missing.len() == 0, message: "Faltan estas claves en typeface-options: " + missing.join(", ", last: " y ") + ".")
+    assert(
+      missing.len() == 0,
+      message: "Faltan estas claves en typeface-options: " + missing.join(", ", last: " y ") + ".",
+    )
     for role in roles {
       let options = typeface-options.at(role)
       let field = "typeface-options." + role

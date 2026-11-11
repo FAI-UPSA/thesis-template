@@ -78,7 +78,7 @@
 #let alegreya = (
   text: (
     font: "Alegreya",
-    size: 11pt,
+    size: 11.5pt,
   ),
   display: (font: "Alegreya Sans"),
   math: (

@@ -28,7 +28,7 @@
     (x: 1.2in, bottom: 1.4in, top: 1.8in)
   }
 
-  let cover-scale = if is-front-cover { 1.15 } else { 1.1 }
+  let cover-scale = if is-front-cover { 1.125 } else { 1.1 }
   let body-size = typeface.text.size * cover-scale
 
   set page(
@@ -54,7 +54,7 @@
   set align(center)
 
   show title: set text(
-    size: (body-size * (if is-front-cover { 1.3 } else { 1.2 })),
+    size: (body-size * (if is-front-cover { 1.2 } else { 1.1 })),
     weight: "medium",
     hyphenate: false,
     font: cover-title-typeface.font,
@@ -72,33 +72,38 @@
     justify: false,
   )
 
+  show text: smallcaps
+
   image(
     "../assets/images/upsa-logo-green.svg",
     width: if is-front-cover { 47.5% } else { 40% },
     alt: "Logo de la Universidad Privada de Santa Cruz de la Sierra",
   )
 
-  v(1em)
+  // v(1em)
 
-  block(upper(text(faculty, tracking: 0.1em, size: 1.05em)))
+  // block(upper(text(faculty, tracking: 0.1em, size: 1.05em)))
 
   title()
 
   block(
-    width: 50%,
+    width: 80%,
     {
       set par(leading: 0.75em)
       upper(text(modality, tracking: 0.1em, size: 1.05em))
       v(1em)
-      [para optar al grado de]
+      let fac = smallcaps(text(faculty, size: 1.1em))
+      if faculty == none [que se presenta para optar al grado de] else [
+        que se presenta a la \
+        #fac \
+        para optar al grado de
+      ]
       v(2em)
       text(degree-level, size: 1.1em, style: "italic")
       linebreak()
       [en]
       linebreak()
-      upper(
-        text(major, tracking: 0.075em, size: 1.05em),
-      )
+      upper(text(major, tracking: 0.075em, size: 1.05em))
     },
   )
 
@@ -124,7 +129,6 @@
 
   v(2fr)
 
-  // Place and year.
   block(spacing: 0pt, {
     text(city)
     v(0.4em)

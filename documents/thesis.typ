@@ -7,6 +7,7 @@
 #show: settings.with(
   author-name: "Jassiel Ovando",
   author-university-id: 2021123456,
+  typeface: "Termes",
   work-title: [El título de este documento es «esperanza» y representa todo el esfuerzo de este camino],
   author-email: "a2021123456@upsa.edu.bo",
   supervisor: (
@@ -19,7 +20,8 @@
   ),
   degree-level: [Licenciatura],
   degree-program: [Ingeniería de Sistemas],
-  faculty: [Facultad de Ingeniería],
+  // faculty: [Facultad de Ingeniería],
+  faculty: [Dirección de Investigación y Posgrado],
   modality: [Proyecto de Grado],
   modality-acronym: [PG],
   abstract: lorem(200),

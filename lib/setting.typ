@@ -57,10 +57,6 @@
   )
   info.work-abstract.update(abstract)
 
-  assert(
-    faculty != none,
-    message: "La facultad (faculty) es obligatoria.",
-  )
   info.faculty.update(faculty)
 
   assert(
@@ -138,7 +134,8 @@
         assert(type(options) == dictionary, message: "typeface-options." + role + " debe ser un diccionario.")
         assert("font" in options, message: "Falta typeface-options." + role + ".font.")
         assert(
-          type(options.font) == str or (type(options.font) == array and options.font.len() > 0 and options.font.all(name => type(name) == str)),
+          type(options.font) == str
+            or (type(options.font) == array and options.font.len() > 0 and options.font.all(name => type(name) == str)),
           message: "typeface-options." + role + ".font debe ser un nombre de fuente o una lista de nombres.",
         )
       }

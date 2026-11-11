@@ -3,74 +3,64 @@ version: 3
 env:
   TYPST_ROOT: .
   TYPST_FONT_PATHS: assets/fonts
+
 tasks:
   default:
-    desc: Genera los documentos principales del trabajo de grado
+    desc: Genera la propuesta, tesis, currículum y la entrega para la BIME
     deps:
       - proposal
       - bime
-  cv:
-    desc: Genera el documento de Curriculum Vitae
+  build:
+    desc: Genera los documentos principales una sola vez, sin vigilar cambios
     cmds:
       - typst compile documents/cv.typ
       - typst compile --format svg documents/cv.typ
-    sources:
-      - documents/cv.typ
-    generates:
-      - documents/cv.pdf
-      - documents/cv.svg
+      - typst compile documents/proposal.typ
+      - typst compile --pdf-standard ua-1,a-3a documents/thesis.typ
+      - typst compile --features bundle --format bundle --pdf-standard ua-1,a-3a documents/book.typ
+  cv:
+    desc: Genera el currículum en PDF y SVG
+    deps:
+      - cv:pdf
+      - cv:svg
+  cv:pdf:
+    internal: true
+    cmds:
+      - typst watch documents/cv.typ
+  cv:svg:
+    internal: true
+    cmds:
+      - typst watch --format svg documents/cv.typ
   bime:
     aliases:
       - bime-book
       - book
+    desc: Genera la tesis, las cubiertas, el resumen y las referencias para la BIME
     deps:
       - thesis
+      - bime:bundle
+  bime:bundle:
+    internal: true
     env:
       TYPST_FEATURES: bundle
-    desc: Genera los documentos requeridos para la BIME
     cmds:
-      - typst compile --format bundle --pdf-standard ua-1,a-3a documents/book.typ
-    sources:
-      - "lib.typ"
-      - "lib/**/*.typ"
-      - "documents/book.typ"
-    generates:
-      - "documents/book/**/*.pdf"
-      - "documents/book/**/*.bib"
+      - typst watch --format bundle --pdf-standard ua-1,a-3a documents/book.typ
   proposal:
-    desc: Genera el documento de plan de trabajo
+    desc: Genera la propuesta en PDF
     cmds:
-      - typst compile documents/proposal.typ
-    sources:
-      - documents/proposal.typ
-      - "documents/**/*.typ"
-      - "documents/assets/images/**/*"
-    generates:
-      - documents/proposal.pdf
+      - typst watch documents/proposal.typ
   thesis:
     aliases:
       - tfg
+    desc: Genera la tesis en PDF/A-3a y PDF/UA-1 y prepara el currículum
     deps:
       - cv
-    desc: Genera la tesis o documento principal del trabajo de grado
+      - thesis:pdf
+  thesis:pdf:
+    internal: true
     cmds:
-      - typst compile --pdf-standard ua-1,a-3a documents/thesis.typ
-    sources:
-      - "documents/**/*.typ"
-      - "data/ref.haya.yaml"
-      - "documents/assets/images/**/*"
-      - "lib.typ"
-      - "lib/**/*.typ"
-    generates:
-      - documents/thesis.pdf
+      - typst watch --pdf-standard ua-1,a-3a documents/thesis.typ
   study:
-    desc: Genera el documento de estudio de factibilidad
+    desc: Genera el estudio de factibilidad en PDF
     cmds:
-      - typst compile documents/feasibility/study.typ
-    generates:
-      - documents/feasibility/study.pdf
-    sources:
-      - "documents/feasibility/**/*.typ"
-      - "lib.typ"
-      - "lib/**/*.typ"
-      - "documents/assets/images/**/*"
+      - typst watch documents/feasibility/study.typ

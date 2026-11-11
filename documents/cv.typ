@@ -1,14 +1,19 @@
 #import "@preview/butterick-resume:0.1.1": introduction, template, two-grid
 
-#set text(lang: "es", region: "bo")
-
 #show: template.with()
 
-#set page(margin: 0.5in)
+#set text(
+  lang: "es",
+  region: "bo",
+  font: "Alegreya",
+)
+
+#show heading.where(level: 1): set text(font: "Alegreya Sans")
+#show heading.where(level: 2): set text(font: "Alegreya")
 
 #introduction(
-  name: [Nombre y Apellido],
-  details: [
+  name: text(font: "Alegreya")[Nombre y Apellido],
+  details: text(font: "Alegreya Sans")[
     LinkedIn
     #h(1em)
     GitHub

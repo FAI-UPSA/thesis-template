@@ -10,12 +10,10 @@
     ],
     "tinymist.onPaste": "$root/assets/images",
     "tinymist.copyAndPaste": "enable",
-    // "tinymist.exportTarget": "bundle",
+    // Task gestiona las exportaciones finales, incluidos Bundle y PDF/SVG.
+    "tinymist.exportPdf": "never",
     // "tinymist.previewFeature": "enable",
     // "tinymist.syntaxOnly": "auto",
-    "files.exclude": {
-        "assets/fonts": true
-    },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.typ": "${capture}.pdf, ${capture}-*.pdf, ${capture}.svg",

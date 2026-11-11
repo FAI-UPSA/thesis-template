@@ -28,7 +28,7 @@
 = Conclusiones
 
 #pagebreak()
-#bibliography("bibliography/ref.haya.yaml", title: [Fuentes de información], full: true)
+#bibliography("ref.haya.yaml", title: [Fuentes de información], full: true)
 
 #show: appendix
 

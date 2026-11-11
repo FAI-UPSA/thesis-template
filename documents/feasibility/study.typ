@@ -1,23 +1,26 @@
 #import "/lib.typ": back-matter, front-matter, main-matter, settings
 
 #show: settings.with(
-  graduation-work-info: (
-    title: [Estudio de factibilidad...],
-  ),
-  degree-info: (
-    program: [Ingeniería industrial y de sistemas],
-  ),
-  fonts: (
-    body: "Source Serif 4",
-    title: "Source Sans 3",
-  ),
+  // Datos de ejemplo: reemplazalos antes de entregar el estudio.
+  author-name: "Nombre y Apellido",
+  author-email: "a2021123456@upsa.edu.bo",
+  author-university-id: 2021123456,
+  work-title: [Estudio de factibilidad...],
+  supervisor: [Nombre del asesorauthor],
+  degree-level: [Licenciatura],
+  degree-program: [Ingeniería industrial y de sistemas],
+  faculty: [Facultad de Ingeniería],
+  faculty-acronym: [FAI],
+  modality: [Proyecto de Grado],
+  modality-acronym: [PG],
+  abstract: [Reemplazá este texto con el resumen de tu estudio de factibilidad.],
+  keywords: ("factibilidad",),
+  date: datetime.today(),
 )
 
 #front-matter()
 
 #show: main-matter
-
-#set heading(offset: 1)
 
 #include "chapters/1.introducción.typ"
 #include "chapters/2.marco teórico.typ"
@@ -37,7 +40,7 @@
 #show: back-matter
 
 #bibliography(
-  "bibliography/ref.haya.yaml",
+  "../ref.haya.yaml",
   style: "ieee",
   title: [Bibliografía],
   full: true,

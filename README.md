@@ -45,9 +45,22 @@ Los archivos generados quedan junto a los documentos fuente y no se incluyen en 
 
 ## Personalizar la plantilla
 
-La tipografía predeterminada combina Alegreya, Alegreya Sans, TeX Gyre Pagella Math e IBM Plex Mono. Consultá los conjuntos alternativos en [lib/typeface.typ](lib/typeface.typ). El ejemplo de currículum usa además Source Sans 3 y Source Serif 4; si no están instaladas, su paquete puede mostrar advertencias de sustitución.
+### Tipografía
 
-La bibliografía se configura en cada documento. La plantilla incluye estilos APA y ASCE, además de funciones para generar referencias de tu trabajo en BibLaTeX y Hayagriva.
+La tipografía predeterminada combina [Alegreya](https://htfonts.com/en/fonts/alegreya/), [Alegreya Sans](https://htfonts.com/en/fonts/alegreya-sans/), [TeX Gyre Pagella Math](https://www.gust.org.pl/projects/e-foundry/tex-gyre) e [IBM Plex](https://www.ibm.com/plex/). También podés elegir entre:
+
+- [TeX Gyre Termes y Heros](https://www.gust.org.pl/projects/e-foundry/tex-gyre), alternativas a Times New Roman y Arial/Helvetica.
+- [Reforma](https://pampatype.com/reforma/), de PampaType.
+- Adobe Source: [Sans](https://github.com/adobe-fonts/source-sans), [Serif](https://github.com/adobe-fonts/source-serif) y [Code Pro](https://github.com/adobe-fonts/source-code-pro).
+- [Piazzolla](https://htfonts.com/en/fonts/piazzolla/) y [Andada](https://htfonts.com/en/fonts/andada/).
+- [New Computer Modern](https://www.ctan.org/pkg/newcomputermodern).
+- Arial, Helvetica, Helvetica Neue y Times New Roman, si están instaladas en tu sistema.
+
+El ejemplo de currículum usa además Source Sans 3 y Source Serif 4; si no están instaladas, su paquete puede mostrar advertencias de sustitución. Las combinaciones disponibles están en [lib/typeface.typ](lib/typeface.typ). En `typeface-options`, `text` es obligatorio; `display` es opcional y usa `text` como valor predeterminado. `math` y `mono` también son opcionales y solo personalizan fórmulas y código cuando se proporcionan. Los roles opcionales `title-page` (texto complementario) y `title-page-title` (título del trabajo) se configuran en el mismo diccionario y también usan `text` como valor predeterminado.
+
+### Bibliografía
+
+Se configura en cada documento. La plantilla incluye estilos APA y ASCE, además de funciones para generar referencias de tu trabajo en BibLaTeX y Hayagriva.
 
 ## Recursos y consultas
 

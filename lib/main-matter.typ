@@ -172,7 +172,7 @@
     ),
   ))
 
-  show math.equation: set text(..typeface.math)
+  show math.equation: set text(..typeface.math) if "math" in typeface
 
   set figure.caption(separator: parbreak(), position: top)
   show figure: set align(left)
@@ -184,7 +184,7 @@
     leading: 1em,
   )
   show footnote: set text(size: typeface.text.size * 0.8)
-  show raw: set text(font: typeface.mono.font, size: typeface.mono.size)
+  show raw: set text(font: typeface.mono.font, size: typeface.mono.size) if "mono" in typeface
   show figure.where(kind: math.equation): set figure(supplement: [Fórmula])
   set figure(
     gap: 1.25em,

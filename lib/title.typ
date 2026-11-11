@@ -6,6 +6,8 @@
   import "@preview/datify:1.3.0": custom-date-format
 
   let typeface = info.font.get()
+  let cover-typeface = typeface.title-page
+  let cover-title-typeface = typeface.title-page-title
   let author = info.author-name.get()
   let faculty = info.faculty.get()
   let major = info.degree-program.get()
@@ -38,7 +40,7 @@
   ) if is-front-cover
 
   set text(
-    font: typeface.text.font,
+    font: cover-typeface.font,
     size: body-size,
     weight: "regular",
     number-type: "lining",
@@ -55,7 +57,7 @@
     size: (body-size * (if is-front-cover { 1.35 } else { 1.25 })),
     weight: "medium",
     hyphenate: false,
-    font: typeface.text.font,
+    font: cover-title-typeface.font,
   )
 
   show title: set block(
@@ -86,7 +88,6 @@
     width: 50%,
     {
       set par(leading: 1em)
-
       upper(text(modality, tracking: 0.1em, size: 1.05em))
       v(2em)
       [para optar al grado de]

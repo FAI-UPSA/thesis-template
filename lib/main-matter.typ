@@ -231,12 +231,14 @@
   show: heading-styles.with(offset: chapter-level - 1)
 
   // Imported sections may also have markup depth 1 with a larger offset.
-  // Only resolved part/chapter levels receive a chapter-opening page.
-  show heading.where(level: 1).or(heading.where(level: chapter-level)): it => {
+  // Semantic roles stay valid when back matter resets the heading hierarchy.
+  show heading: it => {
     if it.supplement == [Parte] {
       part-page(it)
-    } else {
+    } else if it.supplement in ([Capítulo], [Anexo]) {
       smallcaps(chapter-page(it))
+    } else {
+      it
     }
   }
 

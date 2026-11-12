@@ -19,13 +19,8 @@
   course: [MG550: Modalidad de Grado],
   instructor: [Ing. Nombre Apellido],
 )
-= Definición del problema
-= Objetivos
-= Metodología
-= Alcance
-= Contenido
-= Cronograma
-= Conclusiones
+
+#include "chapter/intro.typ"
 
 #pagebreak()
 #bibliography("ref.haya.yaml", title: [Fuentes de información], full: true)

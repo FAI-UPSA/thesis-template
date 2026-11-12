@@ -26,6 +26,7 @@
   keywords: ("UPSA", "tesis"),
   date: datetime.today(),
   paper-size: "a4",
+  title-page-mode: "new",
   multi-part: multi-part,
 )
 
@@ -39,23 +40,16 @@
 
 #if multi-part { part[El comienzo] }
 
-= Introducción <cap-introduccion>
+#[
+  = Introducción <cap-introduccion>
 
-Este documento combina contenido de demostración en español con texto de relleno para mostrar la composición de un trabajo de grado. El caso ilustrativo es un sistema de seguimiento de solicitudes de préstamo de equipos de laboratorio. No describe una implementación real ni resultados obtenidos en la Universidad.
+  Este documento combina contenido de demostración en español con texto de relleno para mostrar la composición de un trabajo de grado. El caso ilustrativo es un sistema de seguimiento de solicitudes de préstamo de equipos de laboratorio. No describe una implementación real ni resultados obtenidos en la Universidad.
 
-== Planteamiento del problema
-
-En el escenario ficticio, las solicitudes se registran en archivos separados, lo que dificulta consultar la disponibilidad de equipos y conocer el estado de cada préstamo. El proyecto propone centralizar el registro y mantener una secuencia identificable de solicitud, aprobación, entrega y devolución. Antes de usar este planteamiento en un trabajo real, el estudiante deberá sustituirlo por evidencia de su contexto y delimitar el problema con su asesor.
-
-=== Alcance del ejemplo
-
-La demostración comprende el registro de solicitudes y el seguimiento de sus estados. Se excluyen compras, facturación y mantenimiento físico de equipos. Los nombres de roles y las reglas siguientes son supuestos didácticos, no procedimientos institucionales.
-
-+ El solicitante consulta equipos y registra una solicitud.
-+ El responsable revisa disponibilidad y aprueba o rechaza la solicitud.
-+ El encargado registra la entrega y la devolución del equipo.
-
-Las tablas y referencias de este ejemplo muestran cómo vincular una necesidad con su comprobación posterior; su contenido debe adaptarse al proyecto de cada estudiante.
+  #context {
+    set heading(offset: heading.offset + 1)
+    include "chapter/intro.typ"
+  }
+]
 
 == Jerarquía de encabezamientos <sec-jerarquia>
 
@@ -76,24 +70,6 @@ El quinto nivel es un encabezamiento integrado al texto, sin número. Este párr
 El sexto nivel añade un detalle al párrafo anterior. En esta demostración, la evidencia consiste en registrar el identificador, la acción realizada y el estado resultante de una solicitud.
 
 Se puede volver al #link(<parrafo-evidencia>)[párrafo sobre evidencia] o al #link(<subparrafo-evidencia>)[subpárrafo de detalle] mediante enlaces internos. Los niveles de párrafo y subpárrafo siguen disponibles en los marcadores del PDF, aunque el índice impreso se limita a los cuatro primeros niveles.
-
-=== Objetivos
-
-#lorem(20)
-
-==== Objetivo general
-
-#lorem(100)
-
-==== Objetivos específicos
-
-#lorem(50)
-
-+ #lorem(100)
-+ #lorem(100)
-+ #lorem(100)
-+ #lorem(100)
-+ #lorem(100)
 
 = Desarrollo <cap-desarrollo>
 

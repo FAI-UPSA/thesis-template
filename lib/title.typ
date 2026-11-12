@@ -43,6 +43,7 @@
     font: cover-typeface.font,
     size: body-size,
     weight: "regular",
+    hyphenate: false,
     number-type: "lining",
   )
 
@@ -54,7 +55,7 @@
   set align(center)
 
   show title: set text(
-    size: (body-size * (if is-front-cover { 1.2 } else { 1.1 })),
+    size: (body-size * (if is-front-cover { 1.3 } else { 1.25 })),
     weight: "medium",
     hyphenate: false,
     font: cover-title-typeface.font,
@@ -62,9 +63,7 @@
 
   show title: set block(
     above: 3em,
-    width: 90%,
-    below: 4em,
-    // fill: luma(150),
+    width: 80%,
   )
 
   show title: set par(
@@ -72,48 +71,42 @@
     justify: false,
   )
 
-  show text: smallcaps
-
   image(
     "../assets/images/upsa-logo-green.svg",
     width: if is-front-cover { 47.5% } else { 40% },
     alt: "Logo de la Universidad Privada de Santa Cruz de la Sierra",
   )
 
-  // v(1em)
+  v(1em)
 
-  // block(upper(text(faculty, tracking: 0.1em, size: 1.05em)))
+  text(faculty, size: 1.1em, weight: "medium")
 
   title()
 
-  block(
-    width: 80%,
-    {
-      set par(leading: 0.75em)
-      upper(text(modality, tracking: 0.1em, size: 1.05em))
-      v(1em)
-      let fac = smallcaps(text(faculty, size: 1.1em))
-      if faculty == none [que se presenta para optar al grado de] else [
-        que se presenta a la \
-        #fac \
-        para optar al grado de
-      ]
-      v(2em)
-      text(degree-level, size: 1.1em, style: "italic")
-      linebreak()
-      [en]
-      linebreak()
-      upper(text(major, tracking: 0.075em, size: 1.05em))
-    },
-  )
-
-  v(0.5fr)
+  v(0.75fr)
 
   [por]
 
   v(0.5fr)
 
-  text(author, size: 1.15em)
+  text(author, size: 1.1em)
+
+  v(1fr)
+
+  {
+    set par(leading: 1.1em)
+    upper(text(modality, tracking: 0.1em, size: 1.05em))
+    v(1em)
+    [que se presenta para optar al grado de]
+    v(1em)
+    text(degree-level, size: 1.1em, style: "italic")
+    linebreak()
+    [en]
+    h(0.5em)
+    upper(text(major, tracking: 0.075em, size: 1.05em))
+  }
+
+  v(1fr)
 
   if supervisor != none {
     set align(left)
@@ -127,7 +120,7 @@
     )
   }
 
-  v(2fr)
+  v(1fr)
 
   block(spacing: 0pt, {
     text(city)

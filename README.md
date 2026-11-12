@@ -45,6 +45,10 @@ Los archivos generados quedan junto a los documentos fuente y no se incluyen en 
 
 ## Personalizar la plantilla
 
+### Portada
+
+El parámetro `title-page-mode` de `settings` selecciona el diseño de la carátula y la portada BIME: `"old"` para el tradicional (predeterminado) o `"new"` para el nuevo diseño.
+
 ### Tipografía
 
 La tipografía predeterminada combina [Alegreya](https://htfonts.com/en/fonts/alegreya/), [Alegreya Sans](https://htfonts.com/en/fonts/alegreya-sans/), [TeX Gyre Pagella Math](https://www.gust.org.pl/projects/e-foundry/tex-gyre) e [IBM Plex](https://www.ibm.com/plex/). También podés elegir entre:

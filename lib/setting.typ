@@ -42,11 +42,15 @@
   paper-size: "us-letter",
   /// Si el documento necesita ser dividido en partes (por ejemplo, tesis de doctorado), en lugar de solo capítulos.
   multi-part: false,
+  /// Diseño de carátula y portada: "old" (tradicional) o "new".
+  title-page-mode: "old",
   /// Tomos o volúmenes del trabajo de grado, si aplica. Por defecto es "none".
   volumes: none,
   body,
 ) = context {
   import "info.typ"
+  assert(title-page-mode in ("old", "new"), message: "title-page-mode debe ser old o new.")
+  info.title-page-mode.update(title-page-mode)
 
   info.supervisor.update(supervisor)
   info.degree-program.update(degree-program)

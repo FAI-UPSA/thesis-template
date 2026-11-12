@@ -24,6 +24,7 @@
 #let font-family = state("font-family", "Alegreya")
 #let paper-size = state("paper-size", "us-letter")
 #let work-pages = state("work-pages", 0)
+#let title-page-mode = state("title-page-mode", "old")
 
 #let supervisor-entries(value) = {
   if value == none {

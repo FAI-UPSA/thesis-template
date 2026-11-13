@@ -181,7 +181,7 @@
 /// Genera la entrada BibLaTeX de la tesis en formato `.bib`.
 /// - author: Nombre en formato "Apellidos, Nombres". Si es none, se normaliza automáticamente.
 /// - bibkey: Clave de citación personalizada. Si es none, se genera `apellidoAÑO-palabra`.
-#let generate(author: none, bibkey: none, url: none, doi: none) = context {
+#let generate(author: none, bibkey: none, url: none, doi: none, edition: none) = context {
   let final-author = if author != none {
     author
   } else {
@@ -231,6 +231,7 @@
     note: supervisor-note(info.supervisor.get()),
     url: optional-string(url),
     doi: optional-string(doi),
+    edition: edition,
   )
 
   let biblatex = format-biblatex(
@@ -256,6 +257,7 @@
   archive-location: none,
   url: none,
   doi: none,
+  edition: none,
   supervisor-role: "director",
 ) = context {
   let final-author = if author != none {
@@ -304,12 +306,15 @@
       ),
       location: city,
     ),
+    archive: "Biblioteca de la " + university,
+    archive-location: city,
   )
 
-  // No se presupone una edición ni un depósito bibliotecario antes de que existan.
+  // La biblioteca y su ubicación son conocidas; las opciones permiten sustituirlas. No se presupone una edición.
   for (key, value) in (archive: archive, archive-location: archive-location, url: url) {
     if optional-string(value) != none { data.insert(key, optional-string(value)) }
   }
+  if edition != none { data.insert("edition", edition) }
   if optional-string(doi) != none {
     data.insert("serial-number", (doi: optional-string(doi)))
   }

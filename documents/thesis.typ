@@ -69,6 +69,19 @@
 // A partir de aquí comienza el cuerpo del trabajo y la numeración de capítulos.
 #show: main-matter
 
+// Reutilizá booktab en lugar de table: pasá los encabezados con headers y las celdas como siempre. Las opciones habituales, como columns y align, se pasan directamente a table. Los encabezados en negrita y las líneas se repiten si la tabla continúa en otra página.
+#let booktab(headers: (), ..args) = table(
+  stroke: none,
+  ..args.named(),
+  table.header(
+    table.hline(stroke: 1pt),
+    ..headers.map(header => strong(header)),
+    table.hline(stroke: 0.5pt),
+  ),
+  ..args.pos(),
+  table.footer(table.hline(stroke: 1pt)),
+)
+
 #if multi-part { part[El comienzo] }
 
 #[
@@ -117,12 +130,11 @@ Se puede volver al #link(<parrafo-evidencia>)[párrafo sobre evidencia] o al #li
 #lorem(500)
 
 #figure(
-  table(
+  booktab(
     columns: 3,
-    table.header([Caso de Uso], [Actor], [Descripción]),
+    headers: ([Caso de Uso], [Actor], [Descripción]),
     [CU-01], [Usuario], [El usuario inicia sesión en el sistema.],
     [CU-02], [Administrador], [El administrador gestiona los usuarios.],
-    table.hline(),
   ),
   caption: [Tabla de Casos de Uso],
 ) <tabla-casos>
@@ -132,13 +144,12 @@ Se puede volver al #link(<parrafo-evidencia>)[párrafo sobre evidencia] o al #li
 La @tabla-requisitos vincula los requisitos del caso ficticio con criterios observables. Los identificadores permiten referirse al mismo requisito durante el análisis, el diseño y las pruebas sin repetir su descripción completa.
 
 #figure(
-  table(
+  booktab(
     columns: (auto, 1fr, 1fr),
-    table.header([Identificador], [Requisito ilustrativo], [Criterio de aceptación]),
+    headers: ([Identificador], [Requisito ilustrativo], [Criterio de aceptación]),
     [RF-01], [Registrar una solicitud.], [Con datos válidos se asigna un identificador y el estado pendiente.],
     [RF-02], [Resolver una solicitud.], [Solo el rol responsable puede aprobarla o rechazarla.],
     [RF-03], [Consultar el historial.], [Se muestran los cambios de estado y su fecha para una solicitud.],
-    table.hline(),
   ),
   caption: [Matriz ilustrativa de requisitos y criterios de aceptación],
 ) <tabla-requisitos>
@@ -154,15 +165,14 @@ Cada solicitud contiene un identificador, el equipo, el solicitante y su estado.
 Las pruebas propuestas se derivan de los criterios de la @tabla-requisitos. La tabla siguiente es un plan de comprobación, no un registro de pruebas ejecutadas.
 
 #figure(
-  table(
+  booktab(
     columns: (auto, 1fr, 1fr),
-    table.header([Caso], [Acción], [Resultado esperado]),
+    headers: ([Caso], [Acción], [Resultado esperado]),
     [CP-01],
     [Enviar una solicitud con todos los campos obligatorios.],
     [Se registra una solicitud pendiente con identificador único.],
     [CP-02], [Intentar aprobar con el rol solicitante.], [Se rechaza la operación y se conserva el estado anterior.],
     [CP-03], [Intentar entregar una solicitud rechazada.], [No se registra una entrega.],
-    table.hline(),
   ),
   caption: [Plan ilustrativo de pruebas funcionales],
 )

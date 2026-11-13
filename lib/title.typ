@@ -56,7 +56,7 @@
 
   show title: set text(
     ..cover-title-typeface,
-    size: (body-size * (if is-front-cover { 1.35 } else { 1.25 })),
+    size: (body-size * (if is-front-cover { 1.45 } else { 1.35 })),
     weight: "medium",
     tracking: 0.01em,
     hyphenate: false,

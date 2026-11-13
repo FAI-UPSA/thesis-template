@@ -217,8 +217,6 @@
     title: work-title,
     type: thesis-type,
     institution: info.university.get(),
-    // Conserva institution para BibLaTeX y publisher para los estilos CSL al importar en Typst.
-    publisher: info.university.get(),
     department: info.faculty.get(),
     location: info.city.get(),
     date: year,
@@ -284,7 +282,6 @@
   }
 
   let university = optional-string(info.university.get())
-  let university-short = optional-string(info.university-short.get())
   let city = optional-string(info.city.get())
   let supervision-note = supervisor-note(info.supervisor.get())
   let abstract = optional-string(info.work-abstract.get())
@@ -299,13 +296,7 @@
     abstract: abstract,
     genre: thesis-type,
     organization: university,
-    publisher: (
-      name: (
-        value: university,
-        short: university-short,
-      ),
-      location: city,
-    ),
+    location: city,
     archive: "Biblioteca de la " + university,
     archive-location: city,
   )

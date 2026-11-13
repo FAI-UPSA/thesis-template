@@ -52,6 +52,13 @@
   executive-summary: lorem(50),
   objective: lorem(30),
   problem: lorem(20),
+  // Los índices personalizados van junto a los demás índices preliminares. El selector debe usar el mismo kind que las figuras; si quitás los casos de uso, este índice se omite automáticamente.
+  extra-outlines: context {
+    let target = figure.where(kind: "use-case")
+    if query(target).len() > 0 {
+      outline(title: [Índice de casos de uso], target: target)
+    }
+  },
   // dedication: [A quienes me acompañaron en este camino.],
   // Reemplazá este ejemplo por tus agradecimientos. Conservá el crédito del pie mientras uses Reforma.
   acknowledgements: [
@@ -68,6 +75,7 @@
 
 // A partir de aquí comienza el cuerpo del trabajo y la numeración de capítulos.
 #show: main-matter
+
 
 // Reutilizá booktab en lugar de table: pasá los encabezados con headers y las celdas como siempre. Las opciones habituales, como columns y align, se pasan directamente a table. Los encabezados en negrita y las líneas se repiten si la tabla continúa en otra página.
 #let booktab(headers: (), ..args) = table(
@@ -138,6 +146,62 @@ Se puede volver al #link(<parrafo-evidencia>)[párrafo sobre evidencia] o al #li
   ),
   caption: [Tabla de Casos de Uso],
 ) <tabla-casos>
+
+=== Especificación de casos de uso <sec-casos-de-uso>
+
+Los casos de uso siguientes describen interacciones del ejemplo de préstamo de equipos. Aunque su contenido se presenta en tablas, se numeran como «Caso de uso» y tienen su propio índice en las páginas preliminares. El @cu-solicitar describe la solicitud y el @cu-resolver su resolución.
+
+// kind crea una categoría con contador propio; supplement define el nombre que aparece en el rótulo y las referencias. La función reutiliza los campos y sus encabezados para que solo tengas que completar cada caso.
+#let use-case(title, actor: [], objective: [], precondition: [], main-flow: [], alternative: [], result: []) = {
+  figure(
+    booktab(
+      columns: (auto, 1fr),
+      align: (right, left),
+      headers: ([Campo], [Descripción]),
+      emph[Actor], actor,
+      emph[Objetivo], objective,
+      emph[Precondición], precondition,
+      emph[Flujo principal], main-flow,
+      emph[Alternativa], alternative,
+      emph[Resultado], result,
+    ),
+    kind: "use-case",
+    supplement: [Caso de uso],
+    numbering: "1",
+    caption: title,
+  )
+}
+#show figure.where(kind: "use-case"): set block(breakable: true)
+
+#use-case(
+  [Solicitar un préstamo de equipo],
+  actor: [Estudiante],
+  objective: [Solicitar el préstamo de un equipo disponible.],
+  precondition: [El estudiante tiene una sesión activa y conoce el equipo que necesita.],
+  main-flow: [
+    + El estudiante selecciona el equipo y el período de préstamo.
+    + El sistema valida los datos obligatorios.
+    + El sistema registra la solicitud como pendiente y muestra su identificador.
+  ],
+  alternative: [Si falta un dato obligatorio, el sistema lo señala y permite corregirlo sin registrar la solicitud.],
+  result: [La solicitud queda pendiente de revisión.],
+) <cu-solicitar>
+
+#use-case(
+  [Resolver una solicitud de préstamo],
+  actor: [Responsable de laboratorio],
+  objective: [Aprobar o rechazar una solicitud pendiente.],
+  precondition: [La solicitud existe, está pendiente y el actor tiene permiso para resolverla.],
+  main-flow: [
+    + El responsable consulta los datos de la solicitud.
+    + El responsable elige aprobar o rechazar e indica el motivo.
+    + El sistema guarda la decisión y la incorpora al historial.
+  ],
+  alternative: [Si la solicitud ya fue resuelta, el sistema informa su estado actual y no registra otra decisión.],
+  result: [La solicitud queda aprobada o rechazada.],
+) <cu-resolver>
+
+// Si las especificaciones son extensas, podés moverlas a los anexos conservando kind y sus etiquetas. El índice de casos de uso seguirá reuniéndolas; no hace falta mover el índice a los anexos.
 
 == Trazabilidad de requisitos <trazabilidad>
 

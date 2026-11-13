@@ -147,11 +147,12 @@
     typeface-options
   }
 
+  let display-typeface = selected-typeface.at("display", default: selected-typeface.text)
   let selected-typeface = (
     ..selected-typeface,
-    display: selected-typeface.at("display", default: selected-typeface.text),
-    title-page: selected-typeface.at("title-page", default: selected-typeface.text),
-    title-page-title: selected-typeface.at("title-page-title", default: selected-typeface.text),
+    display: display-typeface,
+    title-page: selected-typeface.at("title-page", default: display-typeface),
+    title-page-title: selected-typeface.at("title-page-title", default: display-typeface),
   )
 
   info.font.update(selected-typeface)

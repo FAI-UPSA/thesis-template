@@ -28,7 +28,7 @@
     (x: 1.2in, bottom: 1.4in, top: 1.8in)
   }
 
-  let cover-scale = if is-front-cover { 1.125 } else { 1.1 }
+  let cover-scale = if is-front-cover { 1.125 } else { 1.2 }
   let body-size = typeface.text.size * cover-scale
 
   set page(
@@ -40,7 +40,7 @@
   ) if is-front-cover
 
   set text(
-    font: cover-typeface.font,
+    ..cover-typeface,
     size: body-size,
     weight: "regular",
     hyphenate: false,
@@ -55,10 +55,11 @@
   set align(center)
 
   show title: set text(
-    size: (body-size * (if is-front-cover { 1.3 } else { 1.25 })),
+    ..cover-title-typeface,
+    size: (body-size * (if is-front-cover { 1.35 } else { 1.25 })),
     weight: "medium",
+    tracking: 0.01em,
     hyphenate: false,
-    font: cover-title-typeface.font,
   )
 
   show title: set block(
@@ -79,7 +80,12 @@
 
   v(1em)
 
-  text(faculty, size: 1.1em, weight: "medium")
+  text(
+    faculty,
+    size: 1em,
+    weight: "medium",
+    tracking: 0.05em,
+  )
 
   title()
 
@@ -87,23 +93,20 @@
 
   [por]
 
-  v(0.5fr)
+  v(0.25fr)
 
-  text(author, size: 1.1em)
+  text(author, size: 1.2em)
 
-  v(1fr)
+  v(1.5fr)
 
   {
-    set par(leading: 1.1em)
-    upper(text(modality, tracking: 0.1em, size: 1.05em))
-    v(1em)
-    [que se presenta para optar al grado de]
-    v(1em)
-    text(degree-level, size: 1.1em, style: "italic")
+    set par(leading: 0.65em)
+    set text(size: 1.1em)
+    upper(text(modality))
     linebreak()
-    [en]
-    h(0.5em)
-    upper(text(major, tracking: 0.075em, size: 1.05em))
+    [que se presenta para optar al grado de]
+    linebreak()
+    emph[#degree-level en #major]
   }
 
   v(1fr)
@@ -111,6 +114,10 @@
   if supervisor != none {
     set align(left)
     v(1fr)
+
+    block(below: 0.5em, sticky: true)[
+      #text(size: 0.9em, weight: "regular", style: "normal")[Supervisión académica]
+    ]
 
     table(
       columns: 2,
@@ -161,7 +168,7 @@
   ) if is-front-cover
   set align(center)
   set par(justify: false, leading: 0.75em)
-  set text(font: typeface.title-page.font, size: 14pt, weight: "bold", number-type: "lining")
+  set text(..typeface.title-page, size: 14pt, weight: "bold", number-type: "lining")
 
   image(
     "../assets/images/upsa-logo-green.svg",
@@ -175,7 +182,7 @@
   block(
     width: 100%,
     text(
-      font: typeface.title-page-title.font,
+      ..typeface.title-page-title,
       size: 15pt,
       hyphenate: false,
       upper(info.work-title.get()),

@@ -8,14 +8,14 @@
   keywords: ("UPSA", "tesis"),
 )
 
-#set text(lang: "es", region: "bo", font: "Alegreya")
+#set text(lang: "es", region: "bo", font: "Reforma 1918")
 
 #show: apa-style.with(
   font-size: 12pt,
 )
 
 #title-page(
-  affiliations: [Facultad de Ingenieria, Universidad Privada de Santa Cruz de la Sierra],
+  affiliations: [Facultad de Ingeniería, Universidad Privada de Santa Cruz de la Sierra],
   course: [MG550: Modalidad de Grado],
   instructor: [Ing. Nombre Apellido],
 )

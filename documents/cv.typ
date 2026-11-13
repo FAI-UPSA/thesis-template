@@ -5,15 +5,15 @@
 #set text(
   lang: "es",
   region: "bo",
-  font: "Alegreya",
+  font: "Reforma 1918",
 )
 
-#show heading.where(level: 1): set text(font: "Alegreya Sans")
-#show heading.where(level: 2): set text(font: "Alegreya")
+#show heading.where(level: 1): set text(font: "Reforma 2018")
+#show heading.where(level: 2): set text(font: "Reforma 1918")
 
 #introduction(
-  name: text(font: "Alegreya")[Nombre y Apellido],
-  details: text(font: "Alegreya Sans")[
+  name: text(font: "Reforma 1918")[Nombre y Apellido],
+  details: text(font: "Reforma 2018")[
     LinkedIn
     #h(1em)
     GitHub

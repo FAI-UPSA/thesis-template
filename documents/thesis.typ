@@ -8,6 +8,7 @@
   author-name: "Jassiel Ovando",
   author-university-id: 2021123456,
   work-title: [El título de este documento es «esperanza» y representa todo el esfuerzo de este camino],
+  typeface: "Reforma",
   author-email: "a2021123456@upsa.edu.bo",
   supervisor: [Dr. Juan Pérez],
   // supervisor: (
@@ -35,6 +36,18 @@
   executive-summary: lorem(50),
   objective: lorem(30),
   problem: lorem(20),
+  // dedication: [A quienes me acompañaron en este camino.],
+  // Reemplazá este ejemplo por tus agradecimientos. Conservá el crédito del pie mientras uses Reforma.
+  acknowledgements: [
+    #set page(
+      footer: align(center, text(size: 8pt)[
+        Reforma, PampaType / Universidad Nacional de Córdoba [AR].
+        CC BY-ND 4.0 · pampatype.com/reforma
+      ]),
+    )
+
+    Agradezco a quienes me acompañaron durante la elaboración de este trabajo.
+  ],
 )
 
 #show: main-matter

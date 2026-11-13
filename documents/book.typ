@@ -34,6 +34,9 @@
   // author: "Ovando Franco, Jassiel",
   // Si necesitás una clave de cita propia en thesis.bib:
   // bibkey: "apellido2026tema",
+  // Una vez publicado el trabajo, agregá su enlace permanente y, si tiene uno, el DOI asignado (sin el prefijo https://doi.org/). Usá los mismos datos en ambos generadores.
+  // url: "https://repositorio.example/handle/1234/5678",
+  // doi: "10.xxxx/identificador",
 )
 
 /// Genera la referencia pero en formato YAML Hayagriva (de Typst).
@@ -44,6 +47,11 @@
   // citation-key: "apellido2026tema",
   /// El número de clasificación es opcional ya que la Biblioteca de la UPSA lo asigna después de la entrega del trabajo.
   // call-number: "Signatura asignada por la biblioteca",
+  // Completá estos datos solo cuando el trabajo esté efectivamente depositado; se omiten por defecto.
+  // archive: "Biblioteca de la UPSA",
+  // archive-location: "Santa Cruz de la Sierra, Bolivia",
+  // url: "https://repositorio.example/handle/1234/5678",
+  // doi: "10.xxxx/identificador",
   // Para omitir la nota con el nombre de la persona supervisora:
   // supervisor-role: none,
 )

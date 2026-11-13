@@ -181,7 +181,7 @@
 /// Genera la entrada BibLaTeX de la tesis en formato `.bib`.
 /// - author: Nombre en formato "Apellidos, Nombres". Si es none, se normaliza automáticamente.
 /// - bibkey: Clave de citación personalizada. Si es none, se genera `apellidoAÑO-palabra`.
-#let generate(author: none, bibkey: none) = context {
+#let generate(author: none, bibkey: none, url: none, doi: none) = context {
   let final-author = if author != none {
     author
   } else {
@@ -217,6 +217,8 @@
     title: work-title,
     type: thesis-type,
     institution: info.university.get(),
+    // Conserva institution para BibLaTeX y publisher para los estilos CSL al importar en Typst.
+    publisher: info.university.get(),
     department: info.faculty.get(),
     location: info.city.get(),
     date: year,
@@ -227,6 +229,8 @@
     degree: info.degree-level.get() + " en " + info.degree-program.get(),
     pagetotal: info.work-pages.final(),
     note: supervisor-note(info.supervisor.get()),
+    url: optional-string(url),
+    doi: optional-string(doi),
   )
 
   let biblatex = format-biblatex(
@@ -248,6 +252,10 @@
   author: none,
   citation-key: none,
   call-number: none,
+  archive: none,
+  archive-location: none,
+  url: none,
+  doi: none,
   supervisor-role: "director",
 ) = context {
   let final-author = if author != none {
@@ -296,10 +304,15 @@
       ),
       location: city,
     ),
-    archive: "Biblioteca de la " + university,
-    archive-location: city,
-    edition: 1,
   )
+
+  // No se presupone una edición ni un depósito bibliotecario antes de que existan.
+  for (key, value) in (archive: archive, archive-location: archive-location, url: url) {
+    if optional-string(value) != none { data.insert(key, optional-string(value)) }
+  }
+  if optional-string(doi) != none {
+    data.insert("serial-number", (doi: optional-string(doi)))
+  }
 
   let pages = info.work-pages.final()
   if pages != none {

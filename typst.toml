@@ -30,7 +30,6 @@ exclude = [
   "documents/feasibility/",
   "documents/book/",
   "NOTICE*",
-  "ACCESSIBILITY*",
   ".task/",
   "Taskfile.yaml",
 ]

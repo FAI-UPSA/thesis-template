@@ -30,14 +30,20 @@
 
 /// Genera la referencia bibliográfica en formato BibLaTeX para que otros tesistas/estudiantes puedan referenciar tu trabajo fácilmente.
 #generate-biblatex(
-  /// El nombre del autor es opcional pero recomendable reescribirlo en formato académico (Apellidos, Nombres) para evitar problemas de normalización. La plantilla trata de normalizarlo automáticamente pero pueden ocurrir errores de interpretación.
-  author: "...",
+  // La conversión automática es de mejor esfuerzo: supone hasta dos apellidos y puede confundir nombres compuestos o un único apellido. Revisá thesis.bib; descomentá author para reemplazar el resultado por el nombre académico exacto, sin cambiar la portada.
+  // author: "Ovando Franco, Jassiel",
+  // Si necesitás una clave de cita propia en thesis.bib:
+  // bibkey: "apellido2026tema",
 )
 
 /// Genera la referencia pero en formato YAML Hayagriva (de Typst).
 #generate-hayagriva(
-  /// Mismo caso que BibLaTeX.
-  // author: "",
+  // Revisá también thesis.yaml. Si la conversión falla, descomentá author e indicá el mismo nombre académico que en el generador BibLaTeX.
+  // author: "Ovando Franco, Jassiel",
+  // Si necesitás una clave de cita propia en thesis.yaml:
+  // citation-key: "apellido2026tema",
   /// El número de clasificación es opcional ya que la Biblioteca de la UPSA lo asigna después de la entrega del trabajo.
-  call-number: "Th005.3 Ov1; CD005.3 Ov1",
+  // call-number: "Signatura asignada por la biblioteca",
+  // Para omitir la nota con el nombre de la persona supervisora:
+  // supervisor-role: none,
 )

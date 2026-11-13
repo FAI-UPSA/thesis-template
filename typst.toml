@@ -8,7 +8,7 @@ repository = "https://github.com/FAI-UPSA/thesis-template"
 entrypoint = "lib.typ"
 authors = ["Jassiel Ovando <@jassielof>"]
 license = "Apache-2.0"
-description = "Plantilla para la elaboración de tesis (documentos de grado) de la Universidad Privada de Santa Cruz de la Sierra (UPSA), Bolivia."
+description = "Documentos de grado de la UPSA, Bolivia."
 keywords = [
   "UPSA",
   "Universidad Privada de Santa Cruz de la Sierra",
@@ -17,7 +17,6 @@ keywords = [
   "trabajos de grado",
   "tfg",
   "documentos de grado",
-  "TFG",
 ]
 categories = ["thesis"]
 disciplines = ["computer-science", "engineering", "business", "psychology", "communication"]

@@ -2,8 +2,10 @@
 #import "@preview/mitex:0.2.7": mitex
 #import "@preview/cetz:0.5.3": canvas, draw
 
+// Activá esta opción si tu trabajo se divide en partes además de capítulos. Por defecto está desactivada. Las llamadas a part que aparecen más abajo se mostrarán al activarla.
 #let multi-part = false
 
+// Reemplazá estos datos por los de tu trabajo. Se reutilizan en la portada, los resúmenes y la entrega BIME de book.typ.
 #show: settings.with(
   author-name: "Jassiel Ovando",
   author-university-id: 2021123456,
@@ -27,11 +29,25 @@
   abstract: lorem(200),
   keywords: ("UPSA", "tesis"),
   date: datetime.today(),
+  // Tamaño de papel: "a4" para A4 o "us-letter" para carta (predeterminado si omitís esta opción).
   paper-size: "a4",
+  // Diseño de la carátula y la portada BIME: "new" para el nuevo diseño u "old" para el tradicional (predeterminado si omitís esta opción).
   title-page-mode: "new",
+  // Márgenes: "screen" (predeterminado, simétricos), "simplex" (impresión a una cara) o "duplex" (doble cara).
+  // print-layout: "duplex",
+  // Para una entrega en varios tomos, indicá cuántos con un número entero. Omití esta opción o usá none si no corresponde.
+  // volumes: 2,
+  // Podés elegir otra combinación de fuentes; deben estar disponibles en tu computadora o proyecto.
+  // typeface: "Termes",
+  // O definir tus propias fuentes. Si usás esta opción, omití typeface.
+  // typeface-options: (
+  //   text: (font: "Reforma 1918", size: 11.5pt),
+  //   display: (font: "Reforma 2018"),
+  // ),
   multi-part: multi-part,
 )
 
+// Las páginas preliminares se generan con los datos anteriores. Reemplazá el relleno; omití los contenidos opcionales que no correspondan.
 #front-matter(
   executive-summary: lorem(50),
   objective: lorem(30),
@@ -50,6 +66,7 @@
   ],
 )
 
+// A partir de aquí comienza el cuerpo del trabajo y la numeración de capítulos.
 #show: main-matter
 
 #if multi-part { part[El comienzo] }
@@ -363,8 +380,10 @@ El contenido de `quote` conserva una atribución explícita. Para una cita real 
 
 #lorem(500)
 
+// Las páginas finales incluyen las referencias y los anexos. Los encabezamientos de anexos comienzan de nuevo con letras.
 #show: back-matter.with()
 
+// Reemplazá las entradas de estos archivos por las fuentes que consultaste. Elegí el estilo que exige tu facultad, por ejemplo "apa" o "ieee". full: true incluye también las entradas que no citaste; usá false para omitirlas.
 #bibliography(
   ("ref.haya.yaml", "ref.bib"),
   style: "ieee",

@@ -1,4 +1,4 @@
-#import "@preview/butterick-resume:0.1.1": introduction, template, two-grid
+#import "@preview/butterick-resume:0.1.2": introduction, template, two-grid
 
 #show: template.with()
 

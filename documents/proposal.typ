@@ -1,4 +1,3 @@
-#import "/lib.typ": back-matter, front-matter, main-matter, settings
 #import "@preview/versatile-apa:7.2.0": abstract-page, appendix, title-page, versatile-apa as apa-style
 
 #set document(

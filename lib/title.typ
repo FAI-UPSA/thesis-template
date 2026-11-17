@@ -72,20 +72,45 @@
     justify: false,
   )
 
-  image(
-    "../assets/images/upsa-logo-green.svg",
-    width: if is-front-cover { 47.5% } else { 40% },
-    alt: "Logo de la Universidad Privada de Santa Cruz de la Sierra",
+  {
+    set par(leading: 0.5em)
+
+    block(
+      width: 80%,
+      text(
+        font: "Optima nova LT Pro",
+        weight: "bold",
+        size: 1.25em,
+        tracking: 0.02em,
+        fill: rgb("#095540"),
+        upper[Universidad Privada de \ Santa Cruz de la Sierra],
+      ),
+    )
+
+    v(0.5fr)
+
+    text(
+      size: 1em,
+      font: "Optima nova LT Pro",
+      weight: "bold",
+      fill: rgb("#095540"),
+      tracking: 0.05em,
+      smallcaps(faculty),
+    )
+  }
+
+  v(0.5fr)
+
+  align(
+    center,
+    image(
+      "../assets/images/upsa-cross-green.svg",
+      width: 20%,
+      alt: "Sello de la Universidad Privada de Santa Cruz de la Sierra",
+    ),
   )
 
-  v(1em)
-
-  text(
-    faculty,
-    size: 1em,
-    weight: "medium",
-    tracking: 0.05em,
-  )
+  v(1.25fr)
 
   title()
 
@@ -97,7 +122,7 @@
 
   text(author, size: 1.2em)
 
-  v(1.5fr)
+  v(1.25fr)
 
   {
     set par(leading: 0.65em)

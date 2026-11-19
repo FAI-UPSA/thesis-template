@@ -6,7 +6,7 @@
   author-email: "a2021123456@upsa.edu.bo",
   author-university-id: 2021123456,
   work-title: [Estudio de factibilidad...],
-  supervisor: [Nombre del asesorauthor],
+  supervisor: [Ing. Juan Carlos Paz Parada],
   degree-level: [Licenciatura],
   degree-program: [Ingeniería industrial y de sistemas],
   faculty: [Facultad de Ingeniería],

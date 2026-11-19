@@ -1,4 +1,4 @@
-# Accesibilidad
+# Accesibilidad y preservación digital
 
 Esta plantilla tiene como uno de sus objetivos facilitar la elaboración de documentos académicos accesibles, estructurados y aptos para su preservación a largo plazo.
 
@@ -12,21 +12,15 @@ Se recomienda que los documentos elaborados con esta plantilla se exporten utili
 - **PDF/A-2a (ISO 19005-2):** establece requisitos para la preservación de documentos PDF a largo plazo, incluyendo información sobre su estructura lógica.
 - **PDF/A-3a (ISO 19005-3):** ofrece capacidades similares a PDF/A-2a y permite incorporar archivos adjuntos, como el código fuente del documento o sus referencias bibliográficas.
 
-Se recomienda combinar PDF/UA-1 con PDF/A-2a o PDF/A-3a, según las necesidades de cada documento y los requisitos de presentación establecidos por la universidad.
-
-Estos estándares tienen propósitos complementarios: **PDF/UA se orienta a la accesibilidad, mientras que PDF/A se orienta a la preservación digital.** Cumplir uno de ellos no implica necesariamente cumplir el otro.
+Se recomienda combinar PDF/UA-1 con PDF/A-2a o PDF/A-3a, según las necesidades de cada documento.
 
 ## Responsabilidad de los autores
 
 La plantilla proporciona una estructura y herramientas orientadas a facilitar la creación de documentos accesibles. Sin embargo, la accesibilidad del documento final también depende de su contenido y de las decisiones de sus autores.
 
-Se recomienda:
+El corrector integrado de Typst ayuda a identificar la mayoría de los problemas de accesibilidad. Al menos bajo los mismos criterios de veraPDF, el PDF/UA generado por Typst resulta conforme, pero bajo los criterios de revisión de PAC pueden encontrarse algunas advertencias de accesibilidad, no fallas, que pueden requerir revisión manual. Estas advertencias, siempre y cuando no se traten de fallas, usualmente no impiden que el documento sea inaccesible; conformidad al 100 % con PDF/UA es usualmente inviable, pero al menos se recomienda que los documentos cumplan con la menor cantidad de advertencias o al menos sin fallas de accesibilidad bajo criterios de veraPDF o PAC.
 
-- Mantener una jerarquía lógica de títulos y secciones.
-- Proporcionar descripciones alternativas para imágenes, gráficos y otros elementos visuales que transmitan información.
-- Utilizar tablas, fórmulas y otros elementos semánticos cuando corresponda.
-- Mantener un contraste adecuado y evitar transmitir información exclusivamente mediante colores.
-- Comprobar que el contenido pueda interpretarse correctamente mediante tecnologías de asistencia.
+Más alla de la conformidad con PDF/UA, existen los aspectos de accesibilidad WCAG, que PAC evalua principalmente, al igual que PDF/UA, estos aspectos están bastante relacionados, por ejemplo, una advertencia de contraste bajo es una advertencia de accesibilidad WCAG, mientras que una advertencia de estructura de encabezados es una advertencia de accesibilidad PDF/UA y WCAG (bajo ciertas condiciones). Es recomendable revisar el contenido visual en este aspecto y de ser posible que sea conforme con las pautas de PAC.
 
 Para conocer estas prácticas en mayor detalle, consultá la [guía oficial de accesibilidad de Typst](https://typst.app/docs/guides/accessibility/).
 
@@ -36,8 +30,8 @@ Typst permite seleccionar estándares de exportación y comprobar automáticamen
 
 Para una verificación adicional (opcional), se pueden utilizar herramientas especializadas, como:
 
-- [PAC](https://pac.pdf-accessibility.org/), para evaluar la accesibilidad de documentos PDF en términos de conformidad con PDF/UA y WCAG.
-- [veraPDF](https://verapdf.org/), para comprobar la conformidad con estándares PDF/A y PDF/UA (en menor medida que PAC).
+- [PAC (solo Windows)](https://pac.pdf-accessibility.org/), para evaluar la accesibilidad de documentos PDF en términos de conformidad con PDF/UA y WCAG.
+- [veraPDF (Web, CLI y GUI)](https://verapdf.org/), para comprobar la conformidad con estándares PDF/A y PDF/UA (en menor medida que PAC).
 
 La superación de las comprobaciones automáticas no garantiza, por sí sola, que un documento sea completamente accesible. También se recomienda realizar revisiones manuales del contenido y su interpretación mediante tecnologías de asistencia.
 
